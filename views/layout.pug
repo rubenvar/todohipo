@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    link(rel='stylesheet', href='/dist/style.css')
+    link(rel="shortcut icon" type="image/png" href="/images/icons/d.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+  body
+    block header
+      header.top
+        .wrapper
+          nav.nav
+            .nav-section#mobile-logo
+              a.nav-section-logo(href="/")
+                h2 todohipo 👩‍⚕️
+    
+    .content
+      .wrapper
+        block content
+
+    block scripts
+      script(src="/dist/App.bundle.js")

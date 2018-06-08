@@ -1,0 +1,9 @@
+extend layout
+
+block content
+  h1 Hello worldkdsfjs!
+  ol
+    each tip in tips
+      li= tip.name
+        p= tip.desc
+        p= tip.category
