@@ -12,7 +12,7 @@ const fs = require('fs');
 exports.dump = (obj) => JSON.stringify(obj, null, 2);
 
 // Some details about the site
-exports.siteName = `voted, a Voting App for freeCodeCamp`;
+exports.siteName = `todohipo 👨‍⚕️, 101 formas de quitar el hipo`;
 
 // exports.menu = [
 //   { slug: '/polls', title: '📊 Polls', },

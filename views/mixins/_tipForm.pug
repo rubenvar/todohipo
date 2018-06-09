@@ -3,7 +3,7 @@ mixin tipForm(tip = {})
     label(for="tip-title") Tip Title:
     input(type="text" name="name" id="tip-title" value=tip.name)
     label(for="tip-desc") Tip Desc:
-    input(type="text" name="desc" id="tip-desc" value=tip.desc)
+    textarea(name="desc" id="tip-desc")= tip.desc
     - const category = tip.category || []
     ul.cats
       each choice in h.categories

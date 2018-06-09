@@ -436,7 +436,7 @@ template {
   display: none; }
 
 @font-face {
-  font-family: arial, sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: normal;
   font-style: normal; }
 
@@ -445,12 +445,12 @@ html {
 
 body {
   font-size: 22px;
-  font-family: arial, sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: #303030; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 30px;
-  font-family: arial, sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: 700;
   margin-bottom: 15px; }
 
@@ -484,11 +484,11 @@ p {
   line-height: 1.4; }
 
 nav {
-  font-family: arial, sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 16px; }
 
 button, input, optgroup, select, textarea {
-  font-family: arial, sans-serif; }
+  font-family: "Quicksand", sans-serif; }
 
 input, textarea {
   width: 100%;
@@ -699,7 +699,8 @@ pre.error {
     font-size: 60px;
     justify-self: center;
     margin: 0;
-    line-height: 1; }
+    line-height: 1;
+    font-family: 'Permanent Marker', cursive; }
   .tip .title {
     margin: 0; }
   .tip .desp {
@@ -707,7 +708,7 @@ pre.error {
   .tip.show .desp {
     display: -ms-grid;
     display: grid;
-    -ms-grid-column: span 2;
-        grid-column: span 2; }
+    -ms-grid-column: 2;
+        grid-column-start: 2; }
 
 /*# sourceMappingURL=style.css.map*/

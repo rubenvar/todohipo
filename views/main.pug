@@ -2,10 +2,12 @@ extend layout
 
 block content
   h1 Hello worldkdsfjs!
+  p Texto xplcar
+  h2 Tiene que ver con tu respiración:
   each tip, index in tips
     .tip
       p.num= index+1
-      p.title= tip.name
+      h3.title= tip.name
       .desp
         p= tip.desc
         p= tip.category

@@ -24,6 +24,7 @@
     justify-self: center;
     margin: 0;
     line-height: 1;
+    font-family: 'Permanent Marker', cursive;
   }
   .title {
     margin: 0;
@@ -34,7 +35,7 @@
   &.show {
     .desp {
       display: grid;
-      grid-column: span 2;
+      grid-column-start: 2;
     }
   }
 }
