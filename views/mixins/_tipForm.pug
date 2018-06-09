@@ -4,11 +4,10 @@ mixin tipForm(tip = {})
     input(type="text" name="name" id="tip-title" value=tip.name)
     label(for="tip-desc") Tip Desc:
     input(type="text" name="desc" id="tip-desc" value=tip.desc)
-    - const choices = ['casa', 'perro', 'vaso', 'yes', 'wiwawiwa']
     - const category = tip.category || []
-    ul.tags
-      each choice in choices
-        .tag.tag__choice
+    ul.cats
+      each choice in h.categories
+        .cat-radio
           input(type="radio" id=choice value=choice name="category" checked=(category.includes(choice)))
           label(for=choice) #{choice}
-    input(type="submit" value="new tip")
+    input(type="submit" value="Save 👍")

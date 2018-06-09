@@ -1,5 +1,5 @@
 @font-face {
-  font-family: arial, sans-serif;
+  font-family: $thefont;
   font-weight: normal;
   font-style: normal;
 }
@@ -10,13 +10,13 @@ html {
 
 body {
   font-size: 22px;
-  font-family: arial, sans-serif;
+  font-family: $thefont;
   color: $black;
 }
 
 h1, h2, h3, h4, h5, h6, {
   font-size: 30px;
-  font-family: arial, sans-serif;
+  font-family: $thefont;
   font-weight: 700;
   margin-bottom: 15px;
 }
@@ -39,12 +39,12 @@ h3 {
 
 a {
   text-decoration: none;
-  color: $black;
+  color: $orange;
 }
 
 p a,
 h2 a {
-  color: $purple;
+  color: $orange;
   &:hover {
     color: $black;
   }
@@ -57,6 +57,10 @@ p {
 }
 
 nav {
-  font-family: arial, sans-serif;
+  font-family: $thefont;
   font-size: 16px;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: $thefont;
 }

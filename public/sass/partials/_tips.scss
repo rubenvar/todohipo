@@ -1,6 +1,7 @@
 .tips {
   margin: 0;
   padding: 0;
+  transition: all 0.5s;
 }
 .tip {
   border: 1px solid #eee;
@@ -18,6 +19,7 @@
     transform: scale(1);
   }
   .num {
+    color: $orange;
     font-size: 60px;
     justify-self: center;
     margin: 0;
@@ -28,5 +30,11 @@
   }
   .desp {
     display: none;
+  }
+  &.show {
+    .desp {
+      display: grid;
+      grid-column: span 2;
+    }
   }
 }

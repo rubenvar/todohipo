@@ -18,3 +18,6 @@ exports.siteName = `voted, a Voting App for freeCodeCamp`;
 //   { slug: '/polls', title: '📊 Polls', },
 //   { slug: '/new/poll', title: '✍️  Add new', },
 // ];
+
+// The categories for the tips
+exports.categories = ['mental', 'agua', 'ayudante', 'respiración'];

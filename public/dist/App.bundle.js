@@ -113,6 +113,10 @@ __webpack_require__(1);
 
 var _bling = __webpack_require__(0);
 
+(0, _bling.$$)('.tip').on('click', function () {
+  this.classList.toggle('show');
+});
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=App.bundle.js.map
