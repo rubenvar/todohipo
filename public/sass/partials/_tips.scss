@@ -1,0 +1,32 @@
+.tips {
+  margin: 0;
+  padding: 0;
+}
+.tip {
+  border: 1px solid #eee;
+  border-radius: 15px;
+  box-shadow: 0 2px 0 #eee;
+  cursor: pointer;
+  margin-bottom: 15px;
+  padding: 10px 0;
+  transform: scale(0.99);
+  transition: all 0.15s;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  align-items: center;
+  &:hover {
+    transform: scale(1);
+  }
+  .num {
+    font-size: 60px;
+    justify-self: center;
+    margin: 0;
+    line-height: 1;
+  }
+  .title {
+    margin: 0;
+  }
+  .desp {
+    display: none;
+  }
+}

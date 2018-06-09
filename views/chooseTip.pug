@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 Choose tip to edit:
+  form.choose-tip(action="/update-form" method="POST")
+    select(name="tips")
+      each tip in tips
+        option(value=`${tip._id}`) #{tip.name}
+    input(type="submit")

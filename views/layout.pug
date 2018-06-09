@@ -15,6 +15,18 @@ html
               a.nav-section-logo(href="/")
                 h2 todohipo 👩‍⚕️
     
+    block messages
+      if locals.flashes
+        .wrapper
+          .inner
+            .flash-messages
+              - const categories = Object.keys(locals.flashes)
+              each category in categories
+                each message in flashes[category]
+                  .flash(class=`flash-${category}`)
+                    p.flash-text!= message
+                    button.flash-remove(onClick="this.parentElement.remove()") &times;
+
     .content
       .wrapper
         block content

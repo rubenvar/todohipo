@@ -1,13 +1,14 @@
-mixin tipForm()
-  form.new-tip(action="/new-tip-submit" method="POST")
+mixin tipForm(tip = {})
+  form.new-tip(action=`/add-tip/${tip._id || ''}` method="POST")
     label(for="tip-title") Tip Title:
-    input(type="text" name="name" id="tip-title")
+    input(type="text" name="name" id="tip-title" value=tip.name)
     label(for="tip-desc") Tip Desc:
-    textarea(name="desc" id="tip-desc")
+    input(type="text" name="desc" id="tip-desc" value=tip.desc)
     - const choices = ['casa', 'perro', 'vaso', 'yes', 'wiwawiwa']
+    - const category = tip.category || []
     ul.tags
       each choice in choices
         .tag.tag__choice
-          input(type="radio" id=choice value=choice name="category")
+          input(type="radio" id=choice value=choice name="category" checked=(category.includes(choice)))
           label(for=choice) #{choice}
     input(type="submit" value="new tip")

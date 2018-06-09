@@ -432,7 +432,7 @@ template {
   display: none; }
 
 @font-face {
-  font-family: 'Comfortaa', cursive;
+  font-family: arial, sans-serif;
   font-weight: normal;
   font-style: normal; }
 
@@ -441,12 +441,12 @@ html {
 
 body {
   font-size: 22px;
-  font-family: 'Comfortaa', cursive;
+  font-family: arial, sans-serif;
   color: #303030; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 30px;
-  font-family: 'Comfortaa', cursive;
+  font-family: arial, sans-serif;
   font-weight: 700;
   margin-bottom: 15px; }
 
@@ -480,7 +480,7 @@ p {
   line-height: 1.4; }
 
 nav {
-  font-family: 'Comfortaa', cursive;
+  font-family: arial, sans-serif;
   font-size: 16px; }
 
 input, textarea {
@@ -711,5 +711,38 @@ pre.error {
   @media all and (max-width: 700px) {
     .homepage .pro-box {
       width: 90%; } }
+
+.tips {
+  margin: 0;
+  padding: 0; }
+
+.tip {
+  border: 1px solid #eee;
+  border-radius: 15px;
+  box-shadow: 0 2px 0 #eee;
+  cursor: pointer;
+  margin-bottom: 15px;
+  padding: 10px 0;
+  -ms-transform: scale(0.99);
+      transform: scale(0.99);
+  transition: all 0.15s;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 10fr;
+      grid-template-columns: 1fr 10fr;
+  -ms-flex-align: center;
+      align-items: center; }
+  .tip:hover {
+    -ms-transform: scale(1);
+        transform: scale(1); }
+  .tip .num {
+    font-size: 60px;
+    justify-self: center;
+    margin: 0;
+    line-height: 1; }
+  .tip .title {
+    margin: 0; }
+  .tip .desp {
+    display: none; }
 
 /*# sourceMappingURL=style.css.map*/

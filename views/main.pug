@@ -2,8 +2,10 @@ extend layout
 
 block content
   h1 Hello worldkdsfjs!
-  ol
-    each tip in tips
-      li= tip.name
+  each tip, index in tips
+    .tip
+      p.num= index+1
+      p.title= tip.name
+      .desp
         p= tip.desc
         p= tip.category

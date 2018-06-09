@@ -1,0 +1,12 @@
+extends layout
+
+include mixins/_tipForm
+
+block content
+  h1 Edit tip:
+  form(action="/delete" method="POST")
+    label(for="tip-id") Tip Id:
+    input(type="text" name="id" id="tip-id" value=tip._id)
+    input(type="submit" value="delete this tip")
+
+  +tipForm(tip)
