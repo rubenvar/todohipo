@@ -1,17 +1,10 @@
 extend layout
 
+include mixins/_tipCard
+
 block content
   h1 Hello worldkdsfjs!
   p Texto xplcar
   h2 Tiene que ver con tu respiración:
   each tip, index in tips
-    .tip
-      p.num= index+1
-      h3.title= tip.name
-      .desp
-        p= tip.desc
-        p= tip.category
-  p
-    a(href="/update") Update a Tip
-    |  - 
-    a(href="/new") New Tip
+    +tipCard(tip, index)

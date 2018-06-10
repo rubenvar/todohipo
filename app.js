@@ -57,6 +57,7 @@ app.use((req, res, next) => {
   res.locals.h = helpers; // some misc helper functions
   res.locals.flashes = req.flash(); // the flash messages
   // res.locals.user = req.user || null; // the user data if they are authenticated
+  res.locals.ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.connection.remoteAddress;
   res.locals.currentPath = req.path; // the path
   next();
 });

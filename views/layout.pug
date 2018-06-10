@@ -1,11 +1,7 @@
 doctype html
 html
   head
-    title= `${title} | ${h.siteName}`
-    link(rel='stylesheet', href='/dist/style.css')
-    link(rel="shortcut icon" type="image/png" href="/images/icons/d.png")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker|Quicksand")
+    include ./head
 
   body
     block header
@@ -31,6 +27,14 @@ html
     .content
       .wrapper
         block content
+
+    footer
+      .wrapper
+        pre= h.dump(ip)
+        p
+          a(href="/update") Update a Tip
+          |  - 
+          a(href="/new") New Tip
 
     block scripts
       script(src="/dist/App.bundle.js")

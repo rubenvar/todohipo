@@ -13,4 +13,6 @@ router.post('/update-form', catchErrors(appController.renderUpdateForm));
 router.post('/add-tip/:tipId', catchErrors(appController.updateTip));
 router.post('/delete', catchErrors(appController.deleteTip));
 
+router.post('/vote/:tipId/:theVote', catchErrors(appController.checkVoted), catchErrors(appController.registerVote));
+
 module.exports = router;

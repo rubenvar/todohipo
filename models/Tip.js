@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-mongoose.Promise = global.Promise; // it's there to suppress the error even if it's added in start.js already
+// mongoose.Promise = global.Promise; // it's there to suppress the error even if it's added in start.js already
 
 const tipSchema = new Schema({
   name: {
@@ -16,11 +16,18 @@ const tipSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  votes: {
+    type: Number,
+    default: 0
+  },
   category: {
     type: String,
     trim: true,
     required: 'Supply a category'
-  }
+  },
+  ips: [{
+    type: String
+  }]
 });
 
 module.exports = mongoose.model('Tip', tipSchema);
