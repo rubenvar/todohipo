@@ -436,9 +436,21 @@ template {
   display: none; }
 
 @font-face {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand';
+  src: url("/fonts/Quicksand-Regular.ttf");
   font-weight: normal;
   font-style: normal; }
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url("/fonts/Quicksand-Bold.ttf");
+  font-weight: bold; }
+
+@font-face {
+  font-family: 'Permanent Marker';
+  src: url("/fonts/PermanentMarker-Regular.ttf");
+  font-weight: normal;
+  font-style: cursive; }
 
 html {
   font-size: 22px; }
@@ -686,8 +698,8 @@ pre.error {
   transition: all 0.15s;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 10fr 2fr;
-      grid-template-columns: 1fr 10fr 2fr;
+  -ms-grid-columns: 1fr 8fr 2fr;
+      grid-template-columns: 1fr 8fr 2fr;
   -ms-flex-align: center;
       align-items: center; }
   .tip:hover {
@@ -703,12 +715,25 @@ pre.error {
   .tip .title {
     margin: 0;
     cursor: pointer; }
+  .tip .vote-forms {
+    display: none;
+    background: #eee;
+    border-radius: 10px;
+    padding: 5px; }
+  .tip.hovering .votes .total {
+    display: none; }
+  .tip.hovering .vote-forms {
+    display: table; }
   .tip .votes {
-    text-align: center; }
-    .tip .votes .up, .tip .votes .total, .tip .votes .down {
+    text-align: center;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-column-align: center;
+        justify-items: center; }
+    .tip .votes .up, .tip .votes .total, .tip .votes .total-voted, .tip .votes .down {
       display: inline-block;
       margin: 0; }
-    .tip .votes .up, .tip .votes .total {
+    .tip .votes .up {
       margin-right: 10px; }
     .tip .votes form input {
       padding: 7px;

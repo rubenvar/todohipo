@@ -5,14 +5,14 @@ mixin tipCard(tip, index)
     .votes(id=`votes-${tip._id}`)
       //- if user already voted, show only total votes 
       if tip.ips.includes(ip)
-        p.total(id=`total-${tip._id}`) #{tip.votes}
+        p.total-voted(id=`total-${tip._id}`) #{tip.votes}
       else
-        p ¿Te ha servido?
-        form.up(action=`/vote/${tip._id}/up` method="POST")
-          input(type="submit" value="👍")
-        //- p.total(id=`total-${tip._id}`) #{tip.votes}
-        form.down(action=`/vote/${tip._id}/down` method="POST")
-          input(type="submit" value="👎")
+        p.total(id=`total-${tip._id}`) #{tip.votes}
+        .vote-forms
+          form.up(action=`/vote/${tip._id}/up` method="POST")
+            input(type="submit" value="👍")
+          form.down(action=`/vote/${tip._id}/down` method="POST")
+            input(type="submit" value="👎")
     .more
       p.desc= tip.desc
       p.cat= tip.category

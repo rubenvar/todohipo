@@ -1,7 +1,21 @@
 @font-face {
-  font-family: $thefont;
+  font-family: 'Quicksand';
+  src: url('/fonts/Quicksand-Regular.ttf');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('/fonts/Quicksand-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Permanent Marker';
+  src: url('/fonts/PermanentMarker-Regular.ttf');
+  font-weight: normal;
+  font-style: cursive;
 }
 
 html {
