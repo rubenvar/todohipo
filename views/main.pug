@@ -4,7 +4,6 @@ include mixins/_tipCard
 
 block content
   h1 Hello worldkdsfjs!
-  p Texto xplcar
-  h2 Tiene que ver con tu respiración:
+  p Texto xplcar y hay #{tips.length} consejos para quitar el hippo
   each tip, index in tips
     +tipCard(tip, index)

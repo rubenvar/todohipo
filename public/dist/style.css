@@ -707,6 +707,7 @@ pre.error {
         transform: scale(1); }
   .tip .num {
     color: #eda004;
+    cursor: pointer;
     font-size: 60px;
     justify-self: center;
     margin: 0;
@@ -730,6 +731,9 @@ pre.error {
     display: grid;
     -ms-grid-column-align: center;
         justify-items: center; }
+    .tip .votes .vota {
+      font-size: 16px;
+      line-height: 1; }
     .tip .votes .up, .tip .votes .total, .tip .votes .total-voted, .tip .votes .down {
       display: inline-block;
       margin: 0; }

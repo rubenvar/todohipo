@@ -1,6 +1,6 @@
 import '../sass/style.scss';
 
-import { $, $$ } from './modules/bling';
+import { $$ } from './modules/bling';
 import registerVote from './modules/vote';
 
 $$('.tip .title').on('click', function(e) {
@@ -8,13 +8,16 @@ $$('.tip .title').on('click', function(e) {
   this.parentNode.classList.toggle('show');
 });
 
-const tips = $$('.tip')
+$$('.tip .num').on('click', function(e) {
+  e.preventDefault();
+  this.parentNode.classList.toggle('show');
+});
 
-tips.on('mouseover', function() {
+$$('.tip').on('mouseover', function() {
   this.classList.add('hovering');
 });
 
-tips.on('mouseout', function() {
+$$('.tip').on('mouseout', function() {
   this.classList.remove('hovering');
 });
 

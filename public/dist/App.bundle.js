@@ -967,8 +967,6 @@ function registerVote(e) {
   _axios2.default.post(this.action).then(function (resp) {
     var html = '<p class="total-voted">' + resp.data.votes + '</p>';
     (0, _bling.$)('#votes-' + resp.data._id).innerHTML = html;
-    // $(`#total-${resp.data._id}`).innerHTML = resp.data.votes;
-    // this.innerHTML = '';
   }).catch(console.error);
 }
 
@@ -1799,13 +1797,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   this.parentNode.classList.toggle('show');
 });
 
-var tips = (0, _bling.$$)('.tip');
+(0, _bling.$$)('.tip .num').on('click', function (e) {
+  e.preventDefault();
+  this.parentNode.classList.toggle('show');
+});
 
-tips.on('mouseover', function () {
+(0, _bling.$$)('.tip').on('mouseover', function () {
   this.classList.add('hovering');
 });
 
-tips.on('mouseout', function () {
+(0, _bling.$$)('.tip').on('mouseout', function () {
   this.classList.remove('hovering');
 });
 

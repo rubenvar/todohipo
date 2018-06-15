@@ -19,6 +19,7 @@
   }
   .num {
     color: $orange;
+    cursor: pointer;
     font-size: 60px;
     justify-self: center;
     margin: 0;
@@ -47,6 +48,10 @@
     text-align: center;
     display: grid;
     justify-items: center;
+    .vota {
+      font-size: 16px;
+      line-height: 1;
+    }
     .up, .total, .total-voted, .down {
       display: inline-block;
       margin: 0;
