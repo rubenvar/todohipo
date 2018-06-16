@@ -15,4 +15,6 @@ router.post('/delete', catchErrors(appController.deleteTip));
 
 router.post('/vote/:tipId/:theVote', catchErrors(appController.checkVoted), catchErrors(appController.registerVote));
 
+router.post('/api/count-click', appController.countClick);
+
 module.exports = router;

@@ -63,3 +63,9 @@ exports.registerVote = async (req, res) => {
   const tip = await Tip.findOneAndUpdate(find, update, options).exec();
   res.json(tip);
 };
+
+exports.countClick = async (req, res) => {
+  const id = req.body.id;
+  const tip = await Tip.findOneAndUpdate({ _id: id }, { $inc: { clicks: 1 } }, { new: true });
+  res.json(tip);
+}

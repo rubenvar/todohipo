@@ -27,7 +27,11 @@ const tipSchema = new Schema({
   },
   ips: [{
     type: String
-  }]
+  }],
+  clicks: {
+    type: Number,
+    default: 0
+  }
 });
 
 module.exports = mongoose.model('Tip', tipSchema);
