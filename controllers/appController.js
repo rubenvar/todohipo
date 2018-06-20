@@ -68,4 +68,22 @@ exports.countClick = async (req, res) => {
   const id = req.body.id;
   const tip = await Tip.findOneAndUpdate({ _id: id }, { $inc: { clicks: 1 } }, { new: true });
   res.json(tip);
-}
+};
+
+exports.resetClicks = async (req, res) => {
+  const tips = await Tip.updateMany({}, { clicks: 0 });
+  req.flash('success', 'The click count in every tip was reseted');
+  res.redirect('back');
+};
+
+exports.resetVotes = async (req, res) => {
+  const tips = await Tip.updateMany({}, { votes: 0 });
+  req.flash('success', 'All the votes were reseted');
+  res.redirect('back');
+};
+
+exports.resetIps = async (req, res) => {
+  const tips = await Tip.updateMany({}, { ips: "" });
+  req.flash('success', 'All the ips were reseted');
+  res.redirect('back');
+};

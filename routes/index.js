@@ -12,6 +12,9 @@ router.get('/update', catchErrors(appController.chooseTipToUpdate));
 router.post('/update-form', catchErrors(appController.renderUpdateForm));
 router.post('/add-tip/:tipId', catchErrors(appController.updateTip));
 router.post('/delete', catchErrors(appController.deleteTip));
+router.post('/reset-clicks', catchErrors(appController.resetClicks));
+router.post('/reset-votes', catchErrors(appController.resetVotes));
+router.post('/reset-ips', catchErrors(appController.resetIps));
 
 router.post('/vote/:tipId/:theVote', catchErrors(appController.checkVoted), catchErrors(appController.registerVote));
 

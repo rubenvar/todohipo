@@ -35,6 +35,15 @@ html
           a(href="/update") Update a Tip
           |  - 
           a(href="/new") New Tip
+          |  - 
+          form.link(action="/reset-clicks" method="POST")
+            input(type="submit" value="Reset Tip Clicks")
+          |  - 
+          form.link(action="/reset-votes" method="POST")
+            input(type="submit" value="Reset All Votes")
+          |  - 
+          form.link(action="/reset-ips" method="POST")
+            input(type="submit" value="Reset All Ips")
 
     block scripts
       script(src="/dist/App.bundle.js")
