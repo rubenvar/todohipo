@@ -12,7 +12,8 @@ const fs = require('fs');
 exports.dump = (obj) => JSON.stringify(obj, null, 2);
 
 // Some details about the site
-exports.siteName = `todohipo 👨‍⚕️, 101 formas de quitar el hipo`;
+// exports.siteName = `todohipo 👨‍⚕️, 101 formas de quitar el hipo`;
+exports.siteDesc = '¿Cómo quitar el hipo? Mira aquí más de 100 formas de curar el hipo, bebiendo agua o con un susto, tú eliges 👍';
 
 // exports.menu = [
 //   { slug: '/polls', title: '📊 Polls', },

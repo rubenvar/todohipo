@@ -3,7 +3,8 @@ const Tip = mongoose.model('Tip');
 
 exports.renderMain = async (req, res) => {
   const tips = await Tip.find();
-  res.render('main', { tips });
+  const title = 'todohipo: ' + tips.length + ' formas de quitar el hipo, la mayor guía en español';
+  res.render('main', { title, tips });
 };
 
 exports.newTip = (req, res) => {
