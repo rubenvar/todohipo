@@ -997,8 +997,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function registerVote(e) {
   e.preventDefault();
-  console.log(this);
-  console.log(this.action);
   _axios2.default.post(this.action).then(function (resp) {
     var html = '<p class="total-voted">' + resp.data.votes + '</p>';
     (0, _bling.$)('#votes-' + resp.data._id).innerHTML = html;

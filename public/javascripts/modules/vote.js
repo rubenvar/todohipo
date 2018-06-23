@@ -3,8 +3,6 @@ import { $ } from './bling';
 
 function registerVote(e) {
   e.preventDefault();
-  console.log(this);
-  console.log(this.action);
   axios
     .post(this.action)
     .then(resp => {

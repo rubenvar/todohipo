@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Add a bunch of tips at the same time!
+  form(action="/bulk-upload-tips" method="POST" enctype="multipart/form-data")
+    label(for="category") Category:
+    input(name="category" id="category" type="text" required)
+    label(for="txtfile") The file (split Tips with "|"):
+    input(type="file" name="txtfile" id="txtfile" accept="text/plain")
+    input(type="submit" value="Upload File ⬆️")

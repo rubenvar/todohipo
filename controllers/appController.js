@@ -1,5 +1,17 @@
 const mongoose = require('mongoose');
 const Tip = mongoose.model('Tip');
+const multer = require('multer');
+const multerOptions = {
+    storage: multer.memoryStorage(),
+    fileFilter(req, file, next) {
+        const isText = file.mimetype.startsWith('text/');
+        if (isText) {
+            next(null, true);
+        } else {
+            next({ message: "That filetype isn't allowed!" }, false);
+        }
+    }
+};
 
 exports.renderMain = async (req, res) => {
   const tips = await Tip.find();
@@ -43,10 +55,48 @@ exports.deleteTip = async (req, res) => {
   res.redirect('/');
 };
 
+exports.renderBulkForm = (req, res) => {
+  res.render('bulk-add', { title: 'Bulk Add' });
+};
+
+exports.upload = multer(multerOptions).single('txtfile');
+
+exports.getData = async (req, res, next) => {
+  if (!req.file) {
+    console.log('no hay file!');
+    next();
+    return;
+  }
+  res.locals.allText = await req.file.buffer.toString('utf8');
+  next();
+};
+
+exports.bulkAddTips = async (req, res) => {
+  const text = res.locals.allText;
+  // parse the content
+  const cat = req.body.category;
+  const arr = text.split(/\n/);
+  // for each tip, create a valid object for the db and store it
+  await Promise.all(
+    arr.map(function(tip) {
+      const fullTip = tip.split(/\|/);
+      fullTip.push(cat);
+
+      const tipObj = {
+        name: fullTip[0],
+        desc: fullTip[1],
+        category: fullTip[2]
+      };
+      // send the obj to db
+      const dbTip = (new Tip(tipObj)).save();
+    })
+  );
+  res.redirect('/');
+};
+
 exports.checkVoted = async (req, res, next) => {
   const tip = await Tip.findOne({ _id: req.params.tipId });
   if (tip.ips.indexOf(res.locals.ip) > -1) {
-    console.log('already voted!');
     return;
   } else {
     next();
@@ -88,3 +138,9 @@ exports.resetIps = async (req, res) => {
   req.flash('success', 'All the ips were reseted');
   res.redirect('back');
 };
+
+exports.deleteTips = async (req, res) => {
+  const tips = await Tip.find().remove().exec();
+  req.flash('success', 'All the tips were removed 🤷‍♂️');
+  res.redirect('back');
+}

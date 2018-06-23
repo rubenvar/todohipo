@@ -30,12 +30,13 @@ html(lang="es-ES")
 
     footer
       .wrapper
-        pre= h.dump(ip)
         p
           a(href="/update") Update a Tip
           |  - 
           a(href="/new") New Tip
           |  - 
+          a(href="/bulk") Bulk Add Tips
+          |
           form.link(action="/reset-clicks" method="POST")
             input(type="submit" value="Reset Tip Clicks")
           |  - 
@@ -44,6 +45,10 @@ html(lang="es-ES")
           |  - 
           form.link(action="/reset-ips" method="POST")
             input(type="submit" value="Reset All Ips")
+          |  - 
+          form.link(action="/delete-tips" method="POST")
+            input(type="submit" value="Delete All Tips")
+        pre= h.dump(ip)
 
     block scripts
       script(src="/dist/App.bundle.js")
