@@ -763,11 +763,14 @@ pre.error {
     .tip .more .cat {
       background: #eda004;
       padding: 3px 5px; }
-  .tip.show .more {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-column: 2;
-        grid-column-start: 2; }
+  .tip.show {
+    -ms-transform: scale(1);
+        transform: scale(1); }
+    .tip.show .more {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-column: 2;
+          grid-column-start: 2; }
 
 footer {
   text-align: center; }

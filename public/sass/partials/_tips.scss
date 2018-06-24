@@ -80,6 +80,7 @@
     }
   }
   &.show {
+    transform: scale(1);
     .more {
       display: grid;
       grid-column-start: 2;
