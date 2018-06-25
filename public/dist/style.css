@@ -6,7 +6,7 @@ body {
   min-height: 100vh; }
 
 header {
-  background: #eda004;
+  background: #c100f2;
   color: #fff; }
 
 .content {
@@ -481,11 +481,11 @@ h3 {
 
 a {
   text-decoration: none;
-  color: #eda004; }
+  color: #c100f2; }
 
 p a,
 h2 a {
-  color: #eda004; }
+  color: #c100f2; }
   p a:hover,
   h2 a:hover {
     color: #303030; }
@@ -569,7 +569,7 @@ form.link {
     padding: 0;
     margin: 0;
     display: inline-block;
-    color: #eda004; }
+    color: #c100f2; }
     form.link input[type="submit"]:hover {
       color: #303030; }
 
@@ -711,13 +711,14 @@ pre.error {
   display: grid;
   -ms-grid-columns: 1fr 8fr 2fr;
       grid-template-columns: 1fr 8fr 2fr;
+  grid-gap: 10px;
   -ms-flex-align: center;
       align-items: center; }
   .tip:hover {
     -ms-transform: scale(1);
         transform: scale(1); }
   .tip .num {
-    color: #eda004;
+    color: #c100f2;
     cursor: pointer;
     font-size: 60px;
     justify-self: center;
@@ -742,27 +743,33 @@ pre.error {
     display: grid;
     -ms-grid-column-align: center;
         justify-items: center; }
-    .tip .votes .vota {
+    .tip .votes .total.vota {
       font-size: 16px;
       line-height: 1; }
     .tip .votes .up, .tip .votes .total, .tip .votes .total-voted, .tip .votes .down {
       display: inline-block;
       margin: 0; }
+    .tip .votes .total, .tip .votes .total-voted {
+      font-size: 30px;
+      color: #555; }
     .tip .votes .up {
       margin-right: 10px; }
     .tip .votes form input {
-      padding: 7px;
+      padding: 7px 8.2px;
       border-radius: 50%;
       margin: 0;
       display: inline-block;
       background: transparent; }
       .tip .votes form input:hover {
-        background: #eda004; }
+        background: #c100f2; }
   .tip .more {
     display: none; }
     .tip .more .cat {
-      background: #eda004;
-      padding: 3px 5px; }
+      background: #c100f2;
+      padding: 3px 5px 5px;
+      color: #fff;
+      display: table;
+      width: 0; }
   .tip.show {
     -ms-transform: scale(1);
         transform: scale(1); }
@@ -770,7 +777,8 @@ pre.error {
       display: -ms-grid;
       display: grid;
       -ms-grid-column: 2;
-          grid-column-start: 2; }
+          grid-column-start: 2;
+      margin-top: 15px; }
 
 footer {
   text-align: center; }
