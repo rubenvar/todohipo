@@ -36,7 +36,7 @@ exports.chooseTipToUpdate = async (req, res) => {
 };
 
 exports.renderUpdateForm = async (req, res) => {
-  const tip = await Tip.findOne( { _id: req.body.tips });
+  const tip = await Tip.findOne( { _id: req.body.tip });
   res.render('update', { tip });
 };
 
@@ -50,7 +50,7 @@ exports.updateTip = async (req, res) => {
 };
 
 exports.deleteTip = async (req, res) => {
-  const tip = await Tip.find({ _id: req.body.id }).remove().exec();
+  const tip = await Tip.find({ _id: req.body.tip }).remove().exec();
   req.flash('success', 'successfully deleted that tip');
   res.redirect('/');
 };
@@ -78,7 +78,7 @@ exports.bulkAddTips = async (req, res) => {
   const arr = text.split(/\n/);
   // for each tip, create a valid object for the db and store it
   await Promise.all(
-    arr.map(function(tip) {
+    arr.map(tip => {
       const fullTip = tip.split(/\|/);
       fullTip.push(cat);
 
@@ -91,6 +91,7 @@ exports.bulkAddTips = async (req, res) => {
       const dbTip = (new Tip(tipObj)).save();
     })
   );
+  req.flash('success', `Yay! ${arr.length} tips successfully added!`)
   res.redirect('/');
 };
 
