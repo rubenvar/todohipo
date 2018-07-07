@@ -84,7 +84,7 @@ exports.bulkAddTips = async (req, res) => {
 
       const tipObj = {
         name: fullTip[0],
-        desc: fullTip[1],
+        desc: '<p>' + fullTip[1] + '</p>',
         category: fullTip[2]
       };
       // send the obj to db

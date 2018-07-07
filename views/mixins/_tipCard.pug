@@ -15,8 +15,7 @@ mixin tipCard(tip, index)
           form.up(action=`/vote/${tip._id}/up` method="POST")
             input(type="submit" value="🔺")
     .more
-      .desc
-        p.desc!= tip.desc
+      .desc!=tip.desc
       .cat= tip.category
       .user
         form(action="/update-form" method="POST")

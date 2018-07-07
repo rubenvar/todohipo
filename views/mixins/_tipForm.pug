@@ -4,6 +4,8 @@ mixin tipForm(tip = {})
     input(type="text" name="name" id="tip-title" value=tip.name)
     label(for="tip-desc") Tip Desc:
     textarea(name="desc" id="tip-desc" rows="5")= tip.desc
+    script.
+      CKEDITOR.replace('desc');
     - const category = tip.category || []
     ul.cats
       each choice in h.categories

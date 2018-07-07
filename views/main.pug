@@ -3,6 +3,7 @@ extend layout
 include mixins/_tipCard
 
 block content
+  pre= h.dump(tips)
   h2 Deja de buscar cómo quitar el hipo!
   p Revisa aquí mismo hasta #{tips.length} formas de quitar el hipo:
   each tip, index in tips
