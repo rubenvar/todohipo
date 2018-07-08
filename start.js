@@ -14,6 +14,7 @@ mongoose.connection.on('error', (err) => {
 
 // import models
 require('./models/Tip');
+require('./models/User');
 
 // Start!
 const app = require('./app');

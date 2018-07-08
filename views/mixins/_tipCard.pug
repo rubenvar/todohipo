@@ -17,10 +17,11 @@ mixin tipCard(tip, index)
     .more
       .desc!=tip.desc
       .cat= tip.category
-      .user
-        form(action="/update-form" method="POST")
-          input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)
-          input(type="submit" value="🖊️ Update this tip")
-        form(action="/delete" method="POST")
-          input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)
-          input(type="submit" value="💣 Delete this tip")
+      if user && user.email === 'hey@rubenvara.io'
+        .user
+          form(action="/update-form" method="POST")
+            input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)
+            input(type="submit" value="🖊️ Update this tip")
+          form(action="/delete" method="POST")
+            input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)
+            input(type="submit" value="💣 Delete this tip")

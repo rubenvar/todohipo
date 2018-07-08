@@ -5,15 +5,15 @@ const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-// const passport = require('passport');
-// const promisify = require('es6-promisify');
+const passport = require('passport');
+const promisify = require('es6-promisify');
 const flash = require('connect-flash');
-// const expressValidator = require('express-validator');
+const expressValidator = require('express-validator');
 
 const routes = require('./routes/index');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
-// require('./handlers/passport'); // specify the strategy for passport
+require('./handlers/passport'); // specify the strategy for passport
 
 // create our Express app
 const app = express();
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Exposes a bunch of methods for validating data. Used heavily on userController.validateRegister
-// app.use(expressValidator());
+app.use(expressValidator());
 
 // populates req.cookies with any cookies that came along with the request
 app.use(cookieParser());
@@ -45,28 +45,28 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
-// // Passport JS is what we use to handle our logins
-// app.use(passport.initialize());
-// app.use(passport.session());
+// Passport JS is what we use to handle our logins
+app.use(passport.initialize());
+app.use(passport.session());
 
-// // The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
+// The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
 app.use(flash());
 
 // pass variables to our templates + all requests
 app.use((req, res, next) => {
   res.locals.h = helpers; // some misc helper functions
   res.locals.flashes = req.flash(); // the flash messages
-  // res.locals.user = req.user || null; // the user data if they are authenticated
+  res.locals.user = req.user || null; // the user data if they are authenticated
   res.locals.ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.connection.remoteAddress;
   res.locals.currentPath = req.path; // the path
   next();
 });
 
 // promisify some callback based APIs
-// app.use((req, res, next) => {
-//   req.login = promisify(req.login, req);
-//   next();
-// });
+app.use((req, res, next) => {
+  req.login = promisify(req.login, req);
+  next();
+});
 
 // After allllll that above middleware, we finally handle our own routes!
 app.use('/', routes);

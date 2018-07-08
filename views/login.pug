@@ -1,0 +1,10 @@
+extend layout
+
+block content
+  h1= title
+  form.user.login(action="/act/login" method="POST")
+    label(for="email") Email:
+    input(type="email" id="email" name="email")
+    label(for="password") Pass:
+    input(type="password" id="password" name="password")
+    input(type="submit" value="Login")

@@ -1,9 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const appController = require('../controllers/appController');
+const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', catchErrors(appController.renderMain));
+
+router.get('/register', userController.renderRegister);
+router.post('/act/register',
+  userController.validateRegister,
+  catchErrors(userController.register),
+  authController.login
+);
+
+router.get('/login', userController.renderLogin);
+router.post('/act/login', authController.login);
+router.post('/act/logout', authController.logout);
 
 router.get('/new', appController.newTip);
 router.post('/add-tip', catchErrors(appController.registerTip));
