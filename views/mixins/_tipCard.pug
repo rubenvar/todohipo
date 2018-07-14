@@ -8,7 +8,7 @@ mixin tipCard(tip, index)
         p.total-voted(id=`total-${tip._id}`) #{tip.votes}
       else
         p.total(id=`total-${tip._id}`) #{tip.votes} 
-        p.total.vota deja tu opinión!
+        p.total.vota ¿Te quitó el hipo?
         .vote-forms
           form.down(action=`/vote/${tip._id}/down` method="POST")
             input(type="submit" value="🔻")
@@ -16,7 +16,8 @@ mixin tipCard(tip, index)
             input(type="submit" value="🔺")
     .more
       .desc!=tip.desc
-      .cat= tip.category
+      .cats
+        p.cat= tip.category
       if user && user.email === 'hey@rubenvara.io'
         .user
           form(action="/update-form" method="POST")

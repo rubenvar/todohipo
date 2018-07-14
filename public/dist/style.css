@@ -541,7 +541,7 @@ input[type="submit"] {
   line-height: 1.2;
   box-shadow: none;
   border: none;
-  background-color: #827cd2;
+  background-color: #ddd;
   color: #fff;
   cursor: pointer; }
   button p,
@@ -745,6 +745,7 @@ pre.error {
         justify-items: center; }
     .tip .votes .total.vota {
       font-size: 16px;
+      margin-bottom: 0;
       line-height: 1; }
     .tip .votes .up, .tip .votes .total, .tip .votes .total-voted, .tip .votes .down {
       display: inline-block;
@@ -752,8 +753,6 @@ pre.error {
     .tip .votes .total, .tip .votes .total-voted {
       font-size: 30px;
       color: #555; }
-    .tip .votes .up {
-      margin-right: 10px; }
     .tip .votes form input {
       padding: 7px 8.2px;
       border-radius: 50%;
@@ -764,12 +763,24 @@ pre.error {
         background: #c100f2; }
   .tip .more {
     display: none; }
-    .tip .more .cat {
-      background: #c100f2;
-      padding: 3px 5px 5px;
-      color: #fff;
-      display: table;
-      width: 0; }
+    .tip .more .cats {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: auto;
+          grid-template-columns: auto;
+      -ms-grid-column-align: left;
+          justify-items: left; }
+      .tip .more .cats .cat {
+        background: #c100f2;
+        padding: 5px;
+        color: #fff; }
+    .tip .more .user {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      margin: 15px 0; }
   .tip.show {
     -ms-transform: scale(1);
         transform: scale(1); }
