@@ -21,4 +21,13 @@ exports.siteDesc = '¿Cómo quitar el hipo? Mira aquí más de 100 formas de cur
 // ];
 
 // The categories for the tips
-exports.categories = ['mental', 'agua', 'ayudante', 'respiración'];
+exports.categories = ['mental', 'agua', 'bebidas', 'alimentos', 'ayudante', 'respiración'];
+
+// Phrases for Tip Voting buttons
+exports.votePhrases = [
+  '¿Te quitó el hipo?',
+  '¿Te sirvió?',
+  'Deja tu opinión!',
+  '¿Curó tu hipo?',
+  '¿Ha sido útil?'
+];
