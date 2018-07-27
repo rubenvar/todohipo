@@ -54,8 +54,6 @@ html(lang="es-ES")
               input(type="submit" value="Delete All Tips")
           pre= h.dump(ip)
           pre= h.dump(user)
-          - const rand = Math.floor(Math.random() * (tips.length))
-          pre= h.dump(tips[rand])
         else
           a(href="/login") Login here
           pre No user
