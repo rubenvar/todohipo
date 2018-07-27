@@ -49,9 +49,9 @@ html(lang="es-ES")
             |  - 
             form.link(action="/reset-ips" method="POST")
               input(type="submit" value="Reset All Ips")
-            |  - 
-            form.link(action="/delete-tips" method="POST")
-              input(type="submit" value="Delete All Tips")
+            //-|  - 
+            //-form.link(action="/delete-tips" method="POST") Commenting this just in case
+              //-input(type="submit" value="Delete All Tips")
           pre= h.dump(ip)
           pre= h.dump(user)
         else
