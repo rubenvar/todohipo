@@ -4,18 +4,7 @@ mixin tipCard(tip, index)
     h3.title= tip.name
     .votes(id=`votes-${tip._id}`)
       //- if user already voted, show only total votes 
-      if tip.ips.includes(ip)
-        p.total-voted(id=`total-${tip._id}`) #{tip.votes}
-      else
-        p.total(id=`total-${tip._id}`) #{tip.votes} 
-        - const randomNumber = Math.floor(Math.random() * (h.votePhrases.length))
-        //- Get a random phrase from the array in h
-        p.total.vota #{h.votePhrases[randomNumber]}
-        .vote-forms
-          form.down(action=`/vote/${tip._id}/down` method="POST")
-            input(type="submit" value="🔻")
-          form.up(action=`/vote/${tip._id}/up` method="POST")
-            input(type="submit" value="🔺")
+      p.total(id=`total-${tip._id}`) #{tip.votes}
     .more
       .desc!=tip.desc
       .cats
@@ -28,3 +17,14 @@ mixin tipCard(tip, index)
           form(action="/delete" method="POST")
             input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)
             input(type="submit" value="💣 Delete this tip")
+    if tip.ips.includes(ip)
+      .nada
+    else
+      .vote-forms
+        - const randomNumber = Math.floor(Math.random() * (h.votePhrases.length))
+        //- Get a random phrase from the array in h
+        p.total.vota #{h.votePhrases[randomNumber]}
+        form.up(action=`/vote/${tip._id}/up` method="POST")
+          input(type="submit" value="🔺")
+        form.down(action=`/vote/${tip._id}/down` method="POST")
+          input(type="submit" value="🔻")

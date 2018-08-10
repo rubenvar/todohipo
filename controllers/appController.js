@@ -15,7 +15,7 @@ const multerOptions = {
 
 exports.renderMain = async (req, res) => {
   const tips = await Tip.find();
-  const title = 'todohipo: ' + tips.length + ' formas de quitar el hipo, la mayor guía en español';
+  const title = `todohipo: ${tips.length ? tips.length : 'más de 50'} formas de quitar el hipo, la mayor guía en español`;
   res.render('main', { title, tips });
 };
 

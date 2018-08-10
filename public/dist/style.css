@@ -702,6 +702,7 @@ pre.error {
   border: 1px solid #eee;
   border-radius: 15px;
   box-shadow: 0 2px 0 #eee;
+  cursor: pointer;
   margin-bottom: 15px;
   padding: 10px 0;
   -ms-transform: scale(0.99);
@@ -719,8 +720,7 @@ pre.error {
         transform: scale(1); }
   .tip .num {
     color: #c100f2;
-    cursor: pointer;
-    font-size: 50px;
+    font-size: 35px;
     /*60*/
     justify-self: center;
     margin: 0;
@@ -728,46 +728,33 @@ pre.error {
     font-family: 'Permanent Marker', cursive; }
   .tip .title {
     margin: 0;
-    cursor: pointer;
     font-size: 26px;
     /*30*/ }
   .tip .vote-forms {
-    display: none;
     background: #eee;
     border-radius: 10px;
     padding: 5px; }
-  .tip.hovering .votes .total {
-    display: none; }
-  .tip.hovering .vote-forms {
-    display: table; }
   .tip .votes {
     text-align: center;
     display: -ms-grid;
     display: grid;
     -ms-grid-column-align: center;
         justify-items: center; }
-    .tip .votes .total.vota {
-      font-size: 15px;
-      margin-bottom: 0;
-      line-height: 1; }
-    .tip .votes .up, .tip .votes .total, .tip .votes .total-voted, .tip .votes .down {
+    .tip .votes .total {
       display: inline-block;
-      margin: 0; }
-    .tip .votes .total, .tip .votes .total-voted {
+      margin: 0;
       font-size: 24px;
       /*30*/
       color: #555; }
-    .tip .votes form input {
-      padding: 7px 8.2px;
-      border-radius: 50%;
-      margin: 0;
-      display: inline-block;
-      background: transparent;
-      font-size: 19px; }
-      .tip .votes form input:hover {
-        background: #c100f2; }
+      .tip .votes .total.vota {
+        font-size: 15px;
+        margin-bottom: 0;
+        line-height: 1; }
   .tip .more {
-    display: none; }
+    display: none;
+    -ms-grid-column: 2;
+        grid-column-start: 2;
+    margin-top: 15px; }
     .tip .more .cats {
       display: -ms-grid;
       display: grid;
@@ -786,15 +773,30 @@ pre.error {
           grid-template-columns: 1fr 1fr;
       grid-gap: 10px;
       margin: 15px 0; }
+  .tip .vote-forms {
+    display: none;
+    -ms-grid-column: 3;
+        grid-column-start: 3; }
+    .tip .vote-forms form input {
+      padding: 7px 8.2px;
+      border-radius: 50%;
+      margin: 0;
+      display: inline-block;
+      background: transparent;
+      font-size: 19px; }
+      .tip .vote-forms form input:hover {
+        background: #c100f2; }
   .tip.show {
     -ms-transform: scale(1);
         transform: scale(1); }
     .tip.show .more {
       display: -ms-grid;
-      display: grid;
-      -ms-grid-column: 2;
-          grid-column-start: 2;
-      margin-top: 15px; }
+      display: grid; }
+    .tip.show .vote-forms {
+      display: -ms-grid;
+      display: grid; }
+      .tip.show .vote-forms.hidden {
+        display: none; }
 
 footer {
   text-align: center; }

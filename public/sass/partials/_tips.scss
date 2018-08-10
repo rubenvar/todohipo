@@ -7,6 +7,7 @@
   border: 1px solid #eee;
   border-radius: 15px;
   box-shadow: 0 2px 0 #eee;
+  cursor: pointer;
   margin-bottom: 15px;
   padding: 10px 0;
   transform: scale(0.99);
@@ -20,8 +21,7 @@
   }
   .num {
     color: $orange;
-    cursor: pointer;
-    font-size: 50px; /*60*/
+    font-size: 35px; /*60*/
     justify-self: center;
     margin: 0;
     line-height: 1;
@@ -29,56 +29,34 @@
   }
   .title {
     margin: 0;
-    cursor: pointer;
     font-size: 26px; /*30*/
   }
   .vote-forms {
-    display: none;
     background: #eee;
     border-radius: 10px;
     padding: 5px;
-  }
-  &.hovering {
-    .votes .total {
-      display: none;
-    }
-    .vote-forms {
-      display: table;
-    }
   }
   .votes {
     text-align: center;
     display: grid;
     justify-items: center;
-    .total.vota {
-      font-size: 15px;
-      margin-bottom: 0;
-      line-height: 1;
-    }
-    .up, .total, .total-voted, .down {
+    .total {
       display: inline-block;
       margin: 0;
-    }
-    .total, .total-voted {
       font-size: 24px; /*30*/
       color: #555;
-    }
-    form {
-      input {
-        padding: 7px 8.2px;
-        border-radius: 50%;
-        margin: 0;
-        display: inline-block;
-        background: transparent;
-        font-size: 19px;
-        &:hover {
-          background: $orange;
-        }
+      &.vota {
+        font-size: 15px;
+        margin-bottom: 0;
+        line-height: 1;
       }
     }
   }
   .more {
     display: none;
+    // grid-template-columns: 1fr 8fr 2fr;
+    grid-column-start: 2;
+    margin-top: 15px;
     .cats {
       display: grid;
       grid-template-columns: auto;
@@ -96,12 +74,31 @@
       margin: 15px 0;
     }
   }
+  .vote-forms {
+    display: none;
+    grid-column-start: 3;
+    form input {
+      padding: 7px 8.2px;
+      border-radius: 50%;
+      margin: 0;
+      display: inline-block;
+      background: transparent;
+      font-size: 19px;
+      &:hover {
+        background: $orange;
+      }
+    }
+  }
   &.show {
     transform: scale(1);
     .more {
       display: grid;
-      grid-column-start: 2;
-      margin-top: 15px;
+    }
+    .vote-forms {
+      display: grid;
+      &.hidden {
+        display: none;
+      }
     }
   }
 }

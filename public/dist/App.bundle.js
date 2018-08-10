@@ -970,7 +970,7 @@ var _axios2 = _interopRequireDefault(_axios);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function registerClick(e) {
-  var id = e.target.parentNode.id.split('-')[1];
+  var id = e.target.id.split('-')[1];
   _axios2.default.post('/api/count-click', { id: id }).catch(console.error);
 }
 
@@ -996,9 +996,12 @@ var _bling = __webpack_require__(2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function registerVote(e) {
+  var _this = this;
+
   e.preventDefault();
   _axios2.default.post(this.action).then(function (resp) {
-    var html = '<p class="total-voted">' + resp.data.votes + '</p>';
+    _this.parentNode.classList.add('hidden');
+    var html = '<p class="total">' + resp.data.votes + '</p>';
     (0, _bling.$)('#votes-' + resp.data._id).innerHTML = html;
   }).catch(console.error);
 }
@@ -1823,22 +1826,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import detectPajita from './modules/pajita';
 
 // Registers clicks to db when click on tip title (only when showing)
-(0, _bling.$$)('.tip .title').on('click', function (e) {
+(0, _bling.$$)('.tip').on('click', function (e) {
   e.preventDefault();
-  this.parentNode.classList.toggle('show');
-  if (this.parentNode.classList.contains('show')) {
+  this.classList.toggle('show');
+  if (this.classList.contains('show')) {
     (0, _expand2.default)(e);
   }
 });
 
-// Registers clicks to db wuen click on tip number (onle when showing)
-(0, _bling.$$)('.tip .num').on('click', function (e) {
-  e.preventDefault();
-  this.parentNode.classList.toggle('show');
-  if (this.parentNode.classList.contains('show')) {
-    (0, _expand2.default)(e);
-  }
-});
+// Registers clicks to db when click on tip number (only when showing)
+// $$('.tip .num').on('click', function(e) {
+//   e.preventDefault();
+//   this.parentNode.classList.toggle('show');
+//   if (this.parentNode.classList.contains('show')) {
+//     registerClick(e);
+//   }
+// });
 
 // Adds class "hovering" to tip when hovering
 (0, _bling.$$)('.tip').on('mouseover', function () {
@@ -1851,8 +1854,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 });
 
 // Registers votes on tip vote form
-(0, _bling.$$)('.votes .up').on('click', _vote2.default);
-(0, _bling.$$)('.votes .down').on('click', _vote2.default);
+(0, _bling.$$)('.vote-forms .up').on('click', _vote2.default);
+(0, _bling.$$)('.vote-forms .down').on('click', _vote2.default);
 
 // Checks for word "pajita" and adds "<abbr>" tags around it
 // ??

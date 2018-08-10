@@ -6,7 +6,8 @@ function registerVote(e) {
   axios
     .post(this.action)
     .then(resp => {
-      const html = `<p class="total-voted">${resp.data.votes}</p>`;
+      this.parentNode.classList.add('hidden');
+      const html = `<p class="total">${resp.data.votes}</p>`;
       $(`#votes-${resp.data._id}`).innerHTML = html;
     })
     .catch(console.error);
