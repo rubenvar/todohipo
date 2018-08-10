@@ -4,16 +4,19 @@ html(lang="es-ES")
     meta(name="description" content=`¿Cómo quitar el hipo? Mira aquí 1666 formas de curar el hipo, bebiendo agua o con un susto, tú eliges 👍`)
     include ./head
 
-  body
+  block vars
+
+  body(class=bodyClass)
     block header
-      header.top
+      header
         .wrapper
-          nav.nav
-            .nav-section
-              a.nav-section-logo(href="/")
-                h2 todohipo 👩‍⚕️
-    
-    block messages
+          .top
+            a.logo(href="/")
+              h2 👩‍⚕️ todohipo.com
+
+    .content
+      block cover
+      block messages
       if locals.flashes
         .wrapper
           .inner
@@ -24,8 +27,6 @@ html(lang="es-ES")
                   .flash(class=`flash-${category}`)
                     p.flash-text!= message
                     button.flash-remove(onClick="this.parentElement.remove()") &times;
-
-    .content
       .wrapper
         block content
 

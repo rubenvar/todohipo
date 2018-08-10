@@ -62,7 +62,7 @@ input[type="submit"] {
     }
   }
   &:hover {
-    background-color: #9c96ec;
+    background-color: $purple;
   }
 }
 
@@ -73,7 +73,7 @@ form.link {
     padding: 0;
     margin: 0;
     display: inline-block;
-    color: $orange;
+    color: $purple;
     &:hover {
       color:$black;
     }

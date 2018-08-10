@@ -8,9 +8,6 @@ const fs = require('fs');
 // Dump is a handy debugging function we can use to sort of "console.log" our data
 exports.dump = (obj) => JSON.stringify(obj, null, 2);
 
-// Some details about the site
-// exports.siteDesc = '¿Cómo quitar el hipo? Mira aquí más de 100 formas de curar el hipo, bebiendo agua o con un susto, tú eliges 👍';
-
 // The categories for the tips
 exports.categories = ['mental', 'agua', 'bebidas', 'alimentos', 'ayudante', 'respiración', 'físico'];
 

@@ -1,5 +1,5 @@
 .tips {
-  margin: 0;
+  margin: 30px 0;
   padding: 0;
   transition: all 0.5s;
 }
@@ -7,7 +7,6 @@
   border: 1px solid #eee;
   border-radius: 15px;
   box-shadow: 0 2px 0 #eee;
-  cursor: pointer;
   margin-bottom: 15px;
   padding: 10px 0;
   transform: scale(0.99);
@@ -16,11 +15,15 @@
   grid-template-columns: 1fr 8fr 2fr;
   grid-gap: 10px;
   align-items: center;
+  &:last-child {
+    margin-bottom: 0;
+  }
   &:hover {
     transform: scale(1);
   }
   .num {
-    color: $orange;
+    color: $purple;
+    cursor: pointer;
     font-size: 35px; /*60*/
     justify-self: center;
     margin: 0;
@@ -29,6 +32,7 @@
   }
   .title {
     margin: 0;
+    cursor: pointer;
     font-size: 26px; /*30*/
   }
   .vote-forms {
@@ -38,6 +42,7 @@
   }
   .votes {
     text-align: center;
+    cursor: pointer;
     display: grid;
     justify-items: center;
     .total {
@@ -62,7 +67,7 @@
       grid-template-columns: auto;
       justify-items: left;
       .cat {
-        background: $orange;
+        background: $purple;
         padding: 5px;
         color: #fff;
       }
@@ -85,7 +90,7 @@
       background: transparent;
       font-size: 19px;
       &:hover {
-        background: $orange;
+        background: $purple;
       }
     }
   }

@@ -1826,22 +1826,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // import detectPajita from './modules/pajita';
 
 // Registers clicks to db when click on tip title (only when showing)
-(0, _bling.$$)('.tip').on('click', function (e) {
+(0, _bling.$$)('.tip .title').on('click', function (e) {
   e.preventDefault();
-  this.classList.toggle('show');
-  if (this.classList.contains('show')) {
+  this.parentNode.classList.toggle('show');
+  if (this.parentNode.classList.contains('show')) {
     (0, _expand2.default)(e);
   }
 });
 
 // Registers clicks to db when click on tip number (only when showing)
-// $$('.tip .num').on('click', function(e) {
-//   e.preventDefault();
-//   this.parentNode.classList.toggle('show');
-//   if (this.parentNode.classList.contains('show')) {
-//     registerClick(e);
-//   }
-// });
+(0, _bling.$$)('.tip .num').on('click', function (e) {
+  e.preventDefault();
+  this.parentNode.classList.toggle('show');
+  if (this.parentNode.classList.contains('show')) {
+    (0, _expand2.default)(e);
+  }
+});
+
+// Registers click to db when click on the vote number
+(0, _bling.$$)('.tip .votes').on('click', function (e) {
+  e.preventDefault();
+  this.parentNode.classList.toggle('show');
+  if (this.parentNode.classList.contains('show')) {
+    (0, _expand2.default)(e);
+  }
+});
 
 // Adds class "hovering" to tip when hovering
 (0, _bling.$$)('.tip').on('mouseover', function () {

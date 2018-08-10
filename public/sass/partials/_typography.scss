@@ -24,13 +24,13 @@ html {
 
 body {
   font-size: 22px;
-  font-family: $thefont;
+  font-family: 'Quicksand', sans-serif;
   color: $black;
 }
 
 h1, h2, h3, h4, h5, h6, {
   font-size: 30px;
-  font-family: $thefont;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   margin-bottom: 15px;
 }
@@ -53,12 +53,12 @@ h3 {
 
 a {
   text-decoration: none;
-  color: $orange;
+  color: $purple;
 }
 
 p a,
 h2 a {
-  color: $orange;
+  color: $purple;
   &:hover {
     color: $black;
   }
@@ -71,10 +71,10 @@ p {
 }
 
 nav {
-  font-family: $thefont;
+  font-family: 'Quicksand', sans-serif;
   font-size: 16px;
 }
 
 button, input, optgroup, select, textarea {
-  font-family: $thefont;
+  font-family: 'Quicksand', sans-serif;
 }

@@ -2,15 +2,21 @@ html {
   font-size: 18px; }
 
 body {
-  background: #fff;
+  position: relative;
   min-height: 100vh; }
 
 header {
-  background: #c100f2;
-  color: #fff; }
+  width: 100%;
+  position: relative;
+  background: transparent; }
+
+footer {
+  background: #eee; }
+  footer p, footer pre {
+    margin: 0; }
 
 .content {
-  padding: 40px 0; }
+  padding: 0; }
   @media all and (max-width: 550px) {
     .content {
       padding-top: 0; } }
@@ -457,12 +463,12 @@ html {
 
 body {
   font-size: 22px;
-  font-family: "Quicksand", sans-serif;
-  color: #303030; }
+  font-family: 'Quicksand', sans-serif;
+  color: #202020; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 30px;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   margin-bottom: 15px; }
 
@@ -488,7 +494,7 @@ h2 a {
   color: #c100f2; }
   p a:hover,
   h2 a:hover {
-    color: #303030; }
+    color: #202020; }
 
 p {
   font-size: 22px;
@@ -496,11 +502,11 @@ p {
   line-height: 1.4; }
 
 nav {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 16px; }
 
 button, input, optgroup, select, textarea {
-  font-family: "Quicksand", sans-serif; }
+  font-family: 'Quicksand', sans-serif; }
 
 input, textarea {
   width: 100%;
@@ -508,7 +514,7 @@ input, textarea {
   margin-bottom: 20px;
   border: 1px solid #ddd; }
   input:focus, input:active, textarea:focus, textarea:active {
-    border-color: #827cd2; }
+    border-color: #c100f2; }
 
 label {
   padding: 0;
@@ -552,7 +558,7 @@ input[type="submit"] {
   .button.sec,
   input[type="submit"].sec {
     background-color: #ddd;
-    color: #303030; }
+    color: #202020; }
     button.sec:hover,
     .button.sec:hover,
     input[type="submit"].sec:hover {
@@ -560,7 +566,7 @@ input[type="submit"] {
   button:hover,
   .button:hover,
   input[type="submit"]:hover {
-    background-color: #9c96ec; }
+    background-color: #c100f2; }
 
 form.link {
   display: inline-block; }
@@ -571,7 +577,7 @@ form.link {
     display: inline-block;
     color: #c100f2; }
     form.link input[type="submit"]:hover {
-      color: #303030; }
+      color: #202020; }
 
 a.button {
   display: block;
@@ -580,7 +586,7 @@ a.button {
 p.add-option {
   cursor: pointer; }
   p.add-option:hover {
-    color: #827cd2; }
+    color: #c100f2; }
 
 @keyframes slideIn {
   0% {
@@ -612,15 +618,15 @@ p.add-option {
     background: none;
     border: 0; }
     .flash-remove:hover {
-      color: #FFC40E; }
+      color: #c100f2; }
   .flash button {
     padding: 0;
-    color: #827cd2;
+    color: #c100f2;
     background-color: #fff;
     margin: 0; }
     .flash button:hover {
       background-color: #fff;
-      color: #303030; }
+      color: #202020; }
   .flash:after {
     content: '';
     display: block;
@@ -641,7 +647,7 @@ p.add-option {
   .flash p {
     margin: 0; }
 
-.nav {
+.top {
   display: -ms-grid;
   display: grid;
   list-style: none;
@@ -649,13 +655,14 @@ p.add-option {
   padding: 5px 0;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-column-align: center;
-      justify-items: center; }
-  .nav h2 {
-    color: #fff;
+  -ms-grid-column-align: left;
+      justify-items: left; }
+  .top h2 {
+    font-family: 'Permanent Marker', cursive;
+    color: #c100f2;
     padding: 0;
     margin: 0;
-    font-size: 50px;
+    font-size: 35px;
     line-height: 1;
     text-transform: none; }
 
@@ -694,7 +701,7 @@ pre.error {
       width: 90%; } }
 
 .tips {
-  margin: 0;
+  margin: 30px 0;
   padding: 0;
   transition: all 0.5s; }
 
@@ -702,7 +709,6 @@ pre.error {
   border: 1px solid #eee;
   border-radius: 15px;
   box-shadow: 0 2px 0 #eee;
-  cursor: pointer;
   margin-bottom: 15px;
   padding: 10px 0;
   -ms-transform: scale(0.99);
@@ -715,11 +721,14 @@ pre.error {
   grid-gap: 10px;
   -ms-flex-align: center;
       align-items: center; }
+  .tip:last-child {
+    margin-bottom: 0; }
   .tip:hover {
     -ms-transform: scale(1);
         transform: scale(1); }
   .tip .num {
     color: #c100f2;
+    cursor: pointer;
     font-size: 35px;
     /*60*/
     justify-self: center;
@@ -728,6 +737,7 @@ pre.error {
     font-family: 'Permanent Marker', cursive; }
   .tip .title {
     margin: 0;
+    cursor: pointer;
     font-size: 26px;
     /*30*/ }
   .tip .vote-forms {
@@ -736,6 +746,7 @@ pre.error {
     padding: 5px; }
   .tip .votes {
     text-align: center;
+    cursor: pointer;
     display: -ms-grid;
     display: grid;
     -ms-grid-column-align: center;
@@ -800,5 +811,26 @@ pre.error {
 
 footer {
   text-align: center; }
+
+.main header {
+  position: absolute; }
+
+.main .content .cover {
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("/images/cover/phone.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  padding: calc(50px + 30px) 0 30px;
+  text-align: center;
+  color: #131313; }
+  .main .content .cover h1 {
+    margin: 0 0 25px;
+    font-size: 52px; }
+  .main .content .cover h4 {
+    font-size: 34px;
+    margin: 34px 0; }
+  .main .content .cover p {
+    font-size: 28px; }
 
 /*# sourceMappingURL=style.css.map*/

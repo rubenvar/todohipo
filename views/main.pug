@@ -2,9 +2,19 @@ extend layout
 
 include mixins/_tipCard
 
+block vars
+  - bodyClass = 'main';
+block cover
+  .cover
+    .wrapper
+      - const num = Math.floor(tips.length / 5) * 5;
+      h1 Deja ya de buscar cómo se quita el hipo!
+      p.big
+        em ¿Acaba de darte un ataque y quieres curarlo AHORA MISMO?
+      h4 👇 Mira aquí más de #{num} remedios para el hipo 👇
+      p Elige uno, lee las instrucciones, y pruébalo
+      p Si no te funciona... Intenta con otro!
 block content
-  //- pre= h.dump(tips)
-  h1 Deja de buscar cómo quitar el hipo!
-  p Revisa aquí mismo hasta #{tips.length} formas de quitar el hipo:
-  each tip, index in tips
-    +tipCard(tip, index)
+  .tips
+    each tip, index in tips
+      +tipCard(tip, index)
