@@ -15,13 +15,6 @@ header {
   background: transparent;
 }
 
-footer {
-  background: #eee;
-  p, pre {
-    margin: 0;
-  }
-}
-
 .content {
   padding: 0;
   @media all and (max-width: 550px) {

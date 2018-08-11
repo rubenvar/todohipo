@@ -1,8 +1,26 @@
+meta(charset="utf-8")
 title= `${title}`
-meta(name="viewport" content="width=device-width, initial-scale=1")
-link(rel='stylesheet', href='/dist/style.css')
+- ;
+meta(name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1")
+link(rel='stylesheet' href='/dist/style.css')
+script(async src="https://cdn.ampproject.org/v0.js")
 link(rel="shortcut icon" type="image/png" href="/images/icons/d.png")
-link(rel="canonical" href="https://todohipo.com")
-meta(charset="UTF-8")
+- const canonical = 'https://todohipo.com';
+link(rel="canonical" href=`${canonical}`)
 script(src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js")
-// script(src="./ckeditor/ckeditor.js")
+//- script(src="./ckeditor/ckeditor.js")
+//- FB Open Graph
+
+meta(property="og:url" content=`${canonical}`)
+meta(property="og:title" content=`${title}`)
+meta(property="og:description" content=`${h.siteDescription}`)
+meta(property="og:image" content=`${canonical}/images/cover/phone.jpg`)
+meta(property="og:type" content="website")
+meta(property="og:locale" content="es_ES")
+//- meta(property="og:updated_time" content="") Cómo conseguir la fecha de actualizacion (no manual)?
+meta(property="og:ttl" content="345600")
+//- Twitter cards (enough with the ones from FB too)
+meta(name="twitter:card" content="summary")
+meta(name="twitter:creator" content="@rubenvara01")
+
+<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>

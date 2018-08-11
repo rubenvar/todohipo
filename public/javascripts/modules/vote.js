@@ -6,7 +6,9 @@ function registerVote(e) {
   axios
     .post(this.action)
     .then(resp => {
-      this.parentNode.classList.add('hidden');
+      // this.parentNode.classList.add('away');
+      // this.parentNode.style.backgroundColor = 'transparent';
+      this.parentNode.innerHTML = '<p class="vota gracias">Muchas gracias por tu voto!</p>';
       const html = `<p class="total">${resp.data.votes}</p>`;
       $(`#votes-${resp.data._id}`).innerHTML = html;
     })

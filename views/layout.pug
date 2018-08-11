@@ -1,8 +1,8 @@
 doctype html
-html(lang="es-ES")
+html(amp lang="es-ES")
   head
-    meta(name="description" content=`¿Cómo quitar el hipo? Mira aquí 1666 formas de curar el hipo, bebiendo agua o con un susto, tú eliges 👍`)
     include ./head
+    meta(name="description" content=`${h.siteDescription}`)
 
   block vars
 
@@ -55,10 +55,16 @@ html(lang="es-ES")
             //-form.link(action="/delete-tips" method="POST") Commenting this just in case
               //-input(type="submit" value="Delete All Tips")
           pre= h.dump(ip)
-          pre= h.dump(user)
         else
-          a(href="/login") Login here
-          pre No user
+          - const year = (new Date()).getFullYear();
+          p Copyright © #{year} - 
+            a(href="/politica-de-privacidad") Política de Privacidad
+          p Creado con 💛 por 
+            a(href="https://rubenvara.io" target="_blank") Rubén Vara
+          p Foto de portada por 
+            a(href="https://unsplash.com/@nordwood?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from NordWood Themes") NordWood Themes
+            |  - 
+            a(href="/login") Login here
 
     block scripts
       script(src="/dist/App.bundle.js")

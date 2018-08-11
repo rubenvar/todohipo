@@ -11,6 +11,9 @@ exports.dump = (obj) => JSON.stringify(obj, null, 2);
 // The categories for the tips
 exports.categories = ['mental', 'agua', 'bebidas', 'alimentos', 'ayudante', 'respiración', 'físico'];
 
+// The site description used in various places
+exports.siteDescription = 'Aquí tienes un montón de remedios y consejos para quitar el hipo. La mayor guía online, con más de 50 trucos para parar un ataque de hipo. Puedes probar varios, y elegir el más efectivo para ti!';
+
 // Phrases for Tip Voting buttons
 exports.votePhrases = [
   '¿Te quitó el hipo?',

@@ -2,107 +2,107 @@
   margin: 30px 0;
   padding: 0;
   transition: all 0.5s;
-}
-.tip {
-  border: 1px solid #eee;
-  border-radius: 15px;
-  box-shadow: 0 2px 0 #eee;
-  margin-bottom: 15px;
-  padding: 10px 0;
-  transform: scale(0.99);
-  transition: all 0.15s;
-  display: grid;
-  grid-template-columns: 1fr 8fr 2fr;
-  grid-gap: 10px;
-  align-items: center;
-  &:last-child {
-    margin-bottom: 0;
-  }
-  &:hover {
-    transform: scale(1);
-  }
-  .num {
-    color: $purple;
-    cursor: pointer;
-    font-size: 35px; /*60*/
-    justify-self: center;
-    margin: 0;
-    line-height: 1;
-    font-family: 'Permanent Marker', cursive;
-  }
-  .title {
-    margin: 0;
-    cursor: pointer;
-    font-size: 26px; /*30*/
-  }
-  .vote-forms {
-    background: #eee;
-    border-radius: 10px;
-    padding: 5px;
-  }
-  .votes {
-    text-align: center;
-    cursor: pointer;
+  .tip {
+    align-items: center;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    box-shadow: 0 2px 0 #ddd;
+    margin-bottom: 15px;
+    padding: 12px 0;
+    transform: scale(0.99);
+    transition: all 0.15s;
     display: grid;
-    justify-items: center;
-    .total {
-      display: inline-block;
+    grid-template-columns: 1fr 8fr 2fr;
+    grid-gap: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      transform: scale(1);
+    }
+    .num {
+      color: $purple;
+      cursor: pointer;
+      font-size: 35px;
       margin: 0;
-      font-size: 24px; /*30*/
-      color: #555;
-      &.vota {
-        font-size: 15px;
-        margin-bottom: 0;
-        line-height: 1;
-      }
+      line-height: 1;
+      font-family: 'Permanent Marker', cursive;
+      justify-self: center;
     }
-  }
-  .more {
-    display: none;
-    // grid-template-columns: 1fr 8fr 2fr;
-    grid-column-start: 2;
-    margin-top: 15px;
-    .cats {
-      display: grid;
-      grid-template-columns: auto;
-      justify-items: left;
-      .cat {
-        background: $purple;
-        padding: 5px;
-        color: #fff;
-      }
-    }
-    .user {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 10px;
-      margin: 15px 0;
-    }
-  }
-  .vote-forms {
-    display: none;
-    grid-column-start: 3;
-    form input {
-      padding: 7px 8.2px;
-      border-radius: 50%;
+    .title {
       margin: 0;
-      display: inline-block;
-      background: transparent;
-      font-size: 19px;
-      &:hover {
-        background: $purple;
+      cursor: pointer;
+      font-size: 26px;
+    }
+    .votes {
+      text-align: center;
+      cursor: pointer;
+      .total {
+        margin: 0;
+        font-size: 24px;
+        color: #555;
       }
     }
-  }
-  &.show {
-    transform: scale(1);
-    .more {
-      display: grid;
+    &.show {
+      transform: scale(1);
+      .more-text,
+      .vote-forms {
+        display: block;
+      }
+    }
+    .more-text {
+      display: none;
+      grid-column-start: 2;
+      margin-top: 15px;
+      .cats {
+        display: grid;
+        grid-template-columns: auto;
+        justify-items: left;
+        .cat {
+          background: $grey;
+          border-radius: 5px;
+          padding: 5px;
+          color: $black;
+        }
+      }
+      .user {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        margin: 15px 0;
+      }
     }
     .vote-forms {
-      display: grid;
-      &.hidden {
-        display: none;
+      display: none;
+      grid-column-start: 3;
+      // background: #eee;
+      background: $purple;
+      color: #fff;
+      border-radius: 10px;
+      padding: 15px 5px;
+      text-align: center;
+      margin: 0 8px;
+      .vota {
+        padding-bottom: 10px;
+        font-size: 17px;
+        margin-bottom: 0;
+        line-height: 1.4;
+      }
+      .gracias {
+        padding: 20px 0;
+      }
+      form input {
+        width: auto;
+        padding: 12px;
+        border-radius: 50%;
+        margin: 0;
+        display: inline-block;
+        background: transparent;
+        font-size: 19px;
+        &:hover {
+          // background: $purple;
+          background: #fff;
+        }
       }
     }
   }

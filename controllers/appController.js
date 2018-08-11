@@ -19,6 +19,10 @@ exports.renderMain = async (req, res) => {
   res.render('main', { title, tips });
 };
 
+exports.renderPrivacyPolicy = (req, res) => {
+  res.render('privacy', { title: 'Política de Privacidad' });
+}
+
 exports.newTip = (req, res) => {
   res.render('newTip');
 };

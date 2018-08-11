@@ -5,7 +5,7 @@ mixin tipCard(tip, index)
     .votes(id=`votes-${tip._id}`)
       //- if user already voted, show only total votes 
       p.total(id=`total-${tip._id}`) #{tip.votes}
-    .more
+    .more-text
       .desc!=tip.desc
       .cats
         p.cat= tip.category
@@ -18,13 +18,12 @@ mixin tipCard(tip, index)
             input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)
             input(type="submit" value="💣 Delete this tip")
     if tip.ips.includes(ip)
-      .nada
     else
       .vote-forms
         - const randomNumber = Math.floor(Math.random() * (h.votePhrases.length))
         //- Get a random phrase from the array in h
-        p.total.vota #{h.votePhrases[randomNumber]}
+        p.vota #{h.votePhrases[randomNumber]}
         form.up(action=`/vote/${tip._id}/up` method="POST")
-          input(type="submit" value="🔺")
+          input(type="submit" value="👍")
         form.down(action=`/vote/${tip._id}/down` method="POST")
-          input(type="submit" value="🔻")
+          input(type="submit" value="👎")

@@ -10,11 +10,6 @@ header {
   position: relative;
   background: transparent; }
 
-footer {
-  background: #eee; }
-  footer p, footer pre {
-    margin: 0; }
-
 .content {
   padding: 0; }
   @media all and (max-width: 550px) {
@@ -704,119 +699,125 @@ pre.error {
   margin: 30px 0;
   padding: 0;
   transition: all 0.5s; }
-
-.tip {
-  border: 1px solid #eee;
-  border-radius: 15px;
-  box-shadow: 0 2px 0 #eee;
-  margin-bottom: 15px;
-  padding: 10px 0;
-  -ms-transform: scale(0.99);
-      transform: scale(0.99);
-  transition: all 0.15s;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 8fr 2fr;
-      grid-template-columns: 1fr 8fr 2fr;
-  grid-gap: 10px;
-  -ms-flex-align: center;
-      align-items: center; }
-  .tip:last-child {
-    margin-bottom: 0; }
-  .tip:hover {
-    -ms-transform: scale(1);
-        transform: scale(1); }
-  .tip .num {
-    color: #c100f2;
-    cursor: pointer;
-    font-size: 35px;
-    /*60*/
-    justify-self: center;
-    margin: 0;
-    line-height: 1;
-    font-family: 'Permanent Marker', cursive; }
-  .tip .title {
-    margin: 0;
-    cursor: pointer;
-    font-size: 26px;
-    /*30*/ }
-  .tip .vote-forms {
-    background: #eee;
-    border-radius: 10px;
-    padding: 5px; }
-  .tip .votes {
-    text-align: center;
-    cursor: pointer;
+  .tips .tip {
+    -ms-flex-align: center;
+        align-items: center;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    box-shadow: 0 2px 0 #ddd;
+    margin-bottom: 15px;
+    padding: 12px 0;
+    -ms-transform: scale(0.99);
+        transform: scale(0.99);
+    transition: all 0.15s;
     display: -ms-grid;
     display: grid;
-    -ms-grid-column-align: center;
-        justify-items: center; }
-    .tip .votes .total {
-      display: inline-block;
+    -ms-grid-columns: 1fr 8fr 2fr;
+        grid-template-columns: 1fr 8fr 2fr;
+    grid-gap: 10px; }
+    .tips .tip:last-child {
+      margin-bottom: 0; }
+    .tips .tip:hover {
+      -ms-transform: scale(1);
+          transform: scale(1); }
+    .tips .tip .num {
+      color: #c100f2;
+      cursor: pointer;
+      font-size: 35px;
       margin: 0;
-      font-size: 24px;
-      /*30*/
-      color: #555; }
-      .tip .votes .total.vota {
-        font-size: 15px;
+      line-height: 1;
+      font-family: 'Permanent Marker', cursive;
+      justify-self: center; }
+    .tips .tip .title {
+      margin: 0;
+      cursor: pointer;
+      font-size: 26px; }
+    .tips .tip .votes {
+      text-align: center;
+      cursor: pointer; }
+      .tips .tip .votes .total {
+        margin: 0;
+        font-size: 24px;
+        color: #555; }
+    .tips .tip.show {
+      -ms-transform: scale(1);
+          transform: scale(1); }
+      .tips .tip.show .more-text,
+      .tips .tip.show .vote-forms {
+        display: block; }
+    .tips .tip .more-text {
+      display: none;
+      -ms-grid-column: 2;
+          grid-column-start: 2;
+      margin-top: 15px; }
+      .tips .tip .more-text .cats {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: auto;
+            grid-template-columns: auto;
+        -ms-grid-column-align: left;
+            justify-items: left; }
+        .tips .tip .more-text .cats .cat {
+          background: #ddd;
+          border-radius: 5px;
+          padding: 5px;
+          color: #202020; }
+      .tips .tip .more-text .user {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        margin: 15px 0; }
+    .tips .tip .vote-forms {
+      display: none;
+      -ms-grid-column: 3;
+          grid-column-start: 3;
+      background: #c100f2;
+      color: #fff;
+      border-radius: 10px;
+      padding: 15px 5px;
+      text-align: center;
+      margin: 0 8px; }
+      .tips .tip .vote-forms .vota {
+        padding-bottom: 10px;
+        font-size: 17px;
         margin-bottom: 0;
-        line-height: 1; }
-  .tip .more {
-    display: none;
-    -ms-grid-column: 2;
-        grid-column-start: 2;
-    margin-top: 15px; }
-    .tip .more .cats {
-      display: -ms-grid;
-      display: grid;
-      -ms-grid-columns: auto;
-          grid-template-columns: auto;
-      -ms-grid-column-align: left;
-          justify-items: left; }
-      .tip .more .cats .cat {
-        background: #c100f2;
-        padding: 5px;
-        color: #fff; }
-    .tip .more .user {
-      display: -ms-grid;
-      display: grid;
-      -ms-grid-columns: 1fr 1fr;
-          grid-template-columns: 1fr 1fr;
-      grid-gap: 10px;
-      margin: 15px 0; }
-  .tip .vote-forms {
-    display: none;
-    -ms-grid-column: 3;
-        grid-column-start: 3; }
-    .tip .vote-forms form input {
-      padding: 7px 8.2px;
-      border-radius: 50%;
-      margin: 0;
-      display: inline-block;
-      background: transparent;
-      font-size: 19px; }
-      .tip .vote-forms form input:hover {
-        background: #c100f2; }
-  .tip.show {
-    -ms-transform: scale(1);
-        transform: scale(1); }
-    .tip.show .more {
-      display: -ms-grid;
-      display: grid; }
-    .tip.show .vote-forms {
-      display: -ms-grid;
-      display: grid; }
-      .tip.show .vote-forms.hidden {
-        display: none; }
+        line-height: 1.4; }
+      .tips .tip .vote-forms .gracias {
+        padding: 20px 0; }
+      .tips .tip .vote-forms form input {
+        width: auto;
+        padding: 12px;
+        border-radius: 50%;
+        margin: 0;
+        display: inline-block;
+        background: transparent;
+        font-size: 19px; }
+        .tips .tip .vote-forms form input:hover {
+          background: #fff; }
 
 footer {
-  text-align: center; }
+  text-align: center;
+  padding: 20px 0;
+  color: #ccc;
+  font-size: 18px;
+  background: #eee; }
+  footer p, footer pre {
+    margin: 0 0 10px;
+    font-size: 18px; }
+    footer p:last-child, footer pre:last-child {
+      margin: 0; }
+  footer a {
+    color: #bbb; }
+    footer a:hover {
+      color: #ccc; }
 
 .main header {
   position: absolute; }
 
 .main .content .cover {
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("/images/cover/phone.jpg");
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url("/images/cover/phone.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
