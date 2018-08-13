@@ -21,7 +21,8 @@
       transform: scale(1);
     }
     .num {
-      color: $purple;
+      // color: $purple;
+      color: #777;
       cursor: pointer;
       font-size: 35px;
       margin: 0;
@@ -40,7 +41,28 @@
       .total {
         margin: 0;
         font-size: 24px;
-        color: #555;
+        // color: #555;
+        color: $purple;
+        font-weight: 700;
+      }
+    }
+    &:first-child {
+      .votes .total {
+        @media all and (max-width: 720px) {
+          &::before {
+            content: "Utilidad: " !important;
+          }
+        }
+      }
+    }
+    &.hovering {
+      .votes .total {
+        &::before {
+          content: "Utilidad: ";
+          @media all and (max-width: 720px) {
+            content: "";
+          }
+        }
       }
     }
     &.show {
@@ -75,8 +97,7 @@
     .vote-forms {
       display: none;
       grid-column-start: 3;
-      // background: #eee;
-      background: $purple;
+      background: $purple; /* #eee */
       color: #fff;
       border-radius: 10px;
       padding: 15px 5px;

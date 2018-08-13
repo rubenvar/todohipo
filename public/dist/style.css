@@ -493,8 +493,15 @@ h2 a {
 
 p {
   font-size: 22px;
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
   line-height: 1.4; }
+
+ul {
+  margin: 0 0 20px;
+  list-style-type: circle;
+  line-height: 1.4; }
+  ul li {
+    margin-bottom: 10px; }
 
 nav {
   font-family: 'Quicksand', sans-serif;
@@ -502,6 +509,15 @@ nav {
 
 button, input, optgroup, select, textarea {
   font-family: 'Quicksand', sans-serif; }
+
+blockquote {
+  margin: 0 0 20px;
+  padding: 5px 20px;
+  border-left: 3px solid #c100f2;
+  background: #eee;
+  font-style: italic; }
+  blockquote p:last-child {
+    margin: 0; }
 
 input, textarea {
   width: 100%;
@@ -721,7 +737,7 @@ pre.error {
       -ms-transform: scale(1);
           transform: scale(1); }
     .tips .tip .num {
-      color: #c100f2;
+      color: #777;
       cursor: pointer;
       font-size: 35px;
       margin: 0;
@@ -738,7 +754,16 @@ pre.error {
       .tips .tip .votes .total {
         margin: 0;
         font-size: 24px;
-        color: #555; }
+        color: #c100f2;
+        font-weight: 700; }
+    @media all and (max-width: 720px) {
+      .tips .tip:first-child .votes .total::before {
+        content: "Utilidad: " !important; } }
+    .tips .tip.hovering .votes .total::before {
+      content: "Utilidad: "; }
+      @media all and (max-width: 720px) {
+        .tips .tip.hovering .votes .total::before {
+          content: ""; } }
     .tips .tip.show {
       -ms-transform: scale(1);
           transform: scale(1); }
@@ -774,6 +799,7 @@ pre.error {
       -ms-grid-column: 3;
           grid-column-start: 3;
       background: #c100f2;
+      /* #eee */
       color: #fff;
       border-radius: 10px;
       padding: 15px 5px;
