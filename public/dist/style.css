@@ -759,10 +759,10 @@ pre.error {
     @media all and (max-width: 720px) {
       .tips .tip:first-child .votes .total::before {
         content: "Utilidad: " !important; } }
-    .tips .tip.hovering .votes .total::before {
+    .tips .tip.hovering .votes .total::before, .tips .tip.show .votes .total::before {
       content: "Utilidad: "; }
       @media all and (max-width: 720px) {
-        .tips .tip.hovering .votes .total::before {
+        .tips .tip.hovering .votes .total::before, .tips .tip.show .votes .total::before {
           content: ""; } }
     .tips .tip.show {
       -ms-transform: scale(1);

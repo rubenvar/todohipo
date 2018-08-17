@@ -55,7 +55,7 @@
         }
       }
     }
-    &.hovering {
+    &.hovering, &.show {
       .votes .total {
         &::before {
           content: "Utilidad: ";

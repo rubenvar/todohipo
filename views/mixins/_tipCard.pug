@@ -1,6 +1,7 @@
 mixin tipCard(tip, index)
+  - const tipNum = index + 1;
   .tip(id=`tip-${tip._id}`)
-    p.num= index+1
+    p.num= tipNum
     h3.title= tip.name
     .votes(id=`votes-${tip._id}`)
       //- if user already voted, show only total votes 

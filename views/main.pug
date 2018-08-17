@@ -17,4 +17,15 @@ block cover
 block content
   .tips
     each tip, index in tips
-      +tipCard(tip, index)
+      if index < 20
+        +tipCard(tip, index)
+  p Aquí va un bloque!
+  .tips
+    each tip, index in tips
+      if index > 19 && index < 40
+        +tipCard(tip, index)
+  p Aquí va un bloque!
+  .tips
+    each tip, index in tips
+      if index > 39
+        +tipCard(tip, index)
