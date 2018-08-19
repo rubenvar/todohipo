@@ -32,7 +32,17 @@ html(lang="es-ES")
 
     footer
       .wrapper
-        if user
+        - const year = (new Date()).getFullYear();
+        p Copyright © #{year} - 
+          a(href="/politica-de-privacidad") Política de Privacidad
+        p Creado con 💛 por 
+          a(href="https://rubenvara.io/?ref=todohipo.com" target="_blank") Rubén
+        p Foto de portada por 
+          a(href="https://unsplash.com/@nordwood?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from NordWood Themes") NordWood Themes
+          |  - 
+          a(href="/login") Login here
+        if user && user.email === 'hey@rubenvara.io'
+          hr
           p
             a(href="/update") Update a Tip
             |  - 
@@ -55,15 +65,6 @@ html(lang="es-ES")
             //-form.link(action="/delete-tips" method="POST") Commenting this just in case
               //-input(type="submit" value="Delete All Tips")
         else
-          - const year = (new Date()).getFullYear();
-          p Copyright © #{year} - 
-            a(href="/politica-de-privacidad") Política de Privacidad
-          p Creado con 💛 por 
-            a(href="https://rubenvara.io" target="_blank") Rubén
-          p Foto de portada por 
-            a(href="https://unsplash.com/@nordwood?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from NordWood Themes") NordWood Themes
-            |  - 
-            a(href="/login") Login here
 
     block scripts
       script(src="/dist/App.bundle.js")

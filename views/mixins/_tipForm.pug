@@ -7,9 +7,13 @@ mixin tipForm(tip = {})
     script.
       CKEDITOR.replace('desc');
     - const category = tip.category || []
-    ul.cats
+    ul.cats-form
+      //- each choice in h.categories
+      //-   .cat-radio
+      //-     input(type="radio" id=choice value=choice name="category" checked=(category.includes(choice)))
+      //-     label(for=choice) #{choice}
       each choice in h.categories
-        .cat-radio
-          input(type="radio" id=choice value=choice name="category" checked=(category.includes(choice)))
+        .cat-checkbox
+          input(type="checkbox" id=choice value=choice name="category" checked=(category.includes(choice)))
           label(for=choice) #{choice}
     input(type="submit" value="👍 Save")

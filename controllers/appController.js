@@ -41,7 +41,7 @@ exports.chooseTipToUpdate = async (req, res) => {
 
 exports.renderUpdateForm = async (req, res) => {
   const tip = await Tip.findOne( { _id: req.body.tip });
-  res.render('update', { tip });
+  res.render('update', { title: `Edit Tip - ${ tip.name }`, tip });
 };
 
 exports.updateTip = async (req, res) => {
@@ -50,7 +50,7 @@ exports.updateTip = async (req, res) => {
     runValidators: true
   }).exec();
   req.flash('success', 'successfully updated that tip');
-  res.redirect('/');
+  res.redirect(`/#tip-${tip._id}`);
 };
 
 exports.deleteTip = async (req, res) => {

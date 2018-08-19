@@ -3,7 +3,7 @@ import '../sass/style.scss';
 import { $, $$ } from './modules/bling';
 import registerVote from './modules/vote';
 import registerClick from './modules/expand';
-import addExtraBlock from './modules/extra';
+// import addExtraBlock from './modules/extra';
 // import detectPajita from './modules/pajita';
 
 // Registers clicks to db when click on tip title (only when showing)

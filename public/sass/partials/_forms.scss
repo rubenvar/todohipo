@@ -27,16 +27,26 @@ button {
   display: none;
 }
 
-.cat-radio {
+.cats-form {
+  margin: 20px 0;
+}
+
+.cat-radio,
+.cat-checkbox {
   input[type="radio"], label {
     display: inline-block;
     width: auto;
+  }
+  input[type="checkbox"] {
+    width: auto;
+    margin-bottom: 5px;
   }
   input[type="radio"] {
     margin-bottom: 3px;
   }
   label {
     margin-left: 7px;
+    margin-bottom: 0;
   }
 }
 

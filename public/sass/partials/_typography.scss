@@ -57,8 +57,10 @@ a {
 }
 
 p a,
-h2 a {
+h2 a,
+li a {
   color: $purple;
+  transition: all 0.3s;
   &:hover {
     color: $black;
   }
@@ -70,13 +72,16 @@ p {
   line-height: 1.4
 }
 
-ul {
+ul, ol {
   margin: 0 0 20px;
-  list-style-type: circle;
   line-height: 1.4;
   li {
     margin-bottom: 10px;
   }
+}
+
+ul {
+  list-style-type: circle;
 }
 
 nav {
@@ -97,4 +102,11 @@ blockquote {
   p:last-child {
     margin: 0;
   }
+}
+
+::selection {
+  background: $grey; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $grey; /* Gecko Browsers */
 }

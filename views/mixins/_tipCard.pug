@@ -8,8 +8,10 @@ mixin tipCard(tip, index)
       p.total(id=`total-${tip._id}`) #{tip.votes}
     .more-text
       .desc!=tip.desc
+      - const cats = tip.category.split(',');
       .cats
-        p.cat= tip.category
+        each cat in cats
+          p.cat= cat
       if user && user.email === 'hey@rubenvara.io'
         .user
           form(action="/update-form" method="POST")

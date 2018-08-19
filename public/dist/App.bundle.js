@@ -977,28 +977,7 @@ function registerClick(e) {
 exports.default = registerClick;
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-function insertBefore(el, referenceNode) {
-  referenceNode.parentNode.insertBefore(el, referenceNode);
-}
-
-function addExtraBlock(n) {
-  var newDiv = document.createElement('div');
-  newDiv.innerHTML = 'casa';
-  insertBefore(newDiv, n);
-}
-
-exports.default = addExtraBlock;
-
-/***/ }),
+/* 11 */,
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1843,12 +1822,9 @@ var _expand = __webpack_require__(10);
 
 var _expand2 = _interopRequireDefault(_expand);
 
-var _extra = __webpack_require__(11);
-
-var _extra2 = _interopRequireDefault(_extra);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import addExtraBlock from './modules/extra';
 // import detectPajita from './modules/pajita';
 
 // Registers clicks to db when click on tip title (only when showing)
