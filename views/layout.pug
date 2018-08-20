@@ -33,12 +33,19 @@ html(lang="es-ES")
     footer
       .wrapper
         - const year = (new Date()).getFullYear();
-        p Copyright © #{year} - 
-          a(href="/politica-de-privacidad") Política de Privacidad
         p Creado con 💛 por 
           a(href="https://rubenvara.io/?ref=todohipo.com" target="_blank") Rubén
-        p
-          a(href="/login") Login here
+        p Copyright © #{year} - 
+          a(href="/politica-de-privacidad") Política de Privacidad
+        p Cover photo by 
+          a(href=`${photoCredit.link}` target="_blank" rel="nofollow") #{photoCredit.user}
+          |  on  
+          a(href="https://unsplash.com" target="_blank" rel="nofollow") Unsplash
+          //- |  - 
+          //- a(href="/login") Login here
+          hr
+          .end-disclaimer
+            p todohipo.com no es una página médica y no se hace responsable de nada de lo que te pase. Si tienes problemas de salud, no deberías probar estos métodos. Si tu hipo persiste, ve al médico.
         if user && user.email === 'hey@rubenvara.io'
           hr
           p

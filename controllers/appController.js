@@ -1,3 +1,4 @@
+const axios = require('axios');
 const mongoose = require('mongoose');
 const Tip = mongoose.model('Tip');
 const multer = require('multer');
@@ -12,14 +13,14 @@ const multerOptions = {
         }
     }
 };
-const axios = require('axios');
 
 exports.getBgPhotoData = (req, res, next) => {
   const uri = 'https://api.unsplash.com/photos/random?query=doctor';
-  const clientId = process.env.UNSPLASH_ID;
+  const clientId = process.env.UNSPLASH_aID;
   axios
     .get(uri, { headers: { "Authorization": `Client-ID ${clientId}` } })
     .then(resp => {
+      // Get the photo link and author
       res.locals.bgPhoto = resp.data.urls.regular;
       res.locals.pgPhotoAuthor = {
         user: resp.data.user.name,
@@ -28,6 +29,7 @@ exports.getBgPhotoData = (req, res, next) => {
       next();
     })
     .catch(err => {
+      // If error, user fallback photo
       console.log(err);
       res.locals.bgPhoto = '/images/cover/phone.jpg';
       res.locals.pgPhotoAuthor = null;
