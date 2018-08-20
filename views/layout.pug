@@ -27,8 +27,8 @@ html(lang="es-ES")
                   .flash(class=`flash-${category}`)
                     p.flash-text!= message
                     button.flash-remove(onClick="this.parentElement.remove()") &times;
-      .wrapper
-        block content
+      //- .wrapper
+      block content
 
     footer
       .wrapper
@@ -37,10 +37,11 @@ html(lang="es-ES")
           a(href="https://rubenvara.io/?ref=todohipo.com" target="_blank") Rubén
         p Copyright © #{year} - 
           a(href="/politica-de-privacidad") Política de Privacidad
-        p Cover photo by 
-          a(href=`${photoCredit.link}` target="_blank" rel="nofollow") #{photoCredit.user}
-          |  on  
-          a(href="https://unsplash.com" target="_blank" rel="nofollow") Unsplash
+        if photoCredit
+          p Cover photo by 
+            a(href=`${photoCredit.link}` target="_blank" rel="nofollow") #{photoCredit.user}
+            |  on  
+            a(href="https://unsplash.com" target="_blank" rel="nofollow") Unsplash
           //- |  - 
           //- a(href="/login") Login here
           hr
@@ -54,6 +55,8 @@ html(lang="es-ES")
             a(href="/new") New Tip
             |  - 
             a(href="/bulk") Bulk Add Tips
+            |  - 
+            a.show-all-button(href="#") Show all Tips
             |
             form.link.logout(action="/act/logout" method="POST")
               input(type="submit" value="Logout here")

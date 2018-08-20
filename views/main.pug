@@ -15,21 +15,31 @@ block cover
       h1 Deja ya de buscar cómo se quita el hipo!
       p.big
         em ¿Acaba de darte un ataque y quieres curarlo AHORA MISMO?
-      h4 👇 Mira aquí más de #{num} remedios para el hipo 👇
+      h2 👇 Mira aquí más de #{num} remedios para el hipo 👇
       p Elige uno, lee las instrucciones, y pruébalo
       p Si no te funciona... Intenta con otro!
 block content
-  .tips
-    each tip, index in tips
-      if index < 20
-        +tipCard(tip, index)
-  p Aquí va un bloque!
-  .tips
-    each tip, index in tips
-      if index > 19 && index < 40
-        +tipCard(tip, index)
-  p Aquí va un bloque!
-  .tips
-    each tip, index in tips
-      if index > 39
-        +tipCard(tip, index)
+  .wrapper
+    .tips
+      each tip, index in tips
+        if index < 15
+          +tipCard(tip, index)
+  .cover.inter-block(style=`background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.5), rgba(255,255,255,0.9)), url('${photo}') no-repeat fixed center; background-size: cover;`)
+    .wrapper
+      p ¿Has probado ya alguno de los #{tips.length} remedios?
+      h2 🗳️ Deja tu voto en cada consejo que intentes! 🗳️
+      p Así otros lectores sabrán si funciona
+  .wrapper
+    .tips
+      each tip, index in tips
+        if index > 14 && index < 40
+          +tipCard(tip, index)
+  .cover.inter-block(style=`background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,.5), rgba(255,255,255,1)), url('${photo}') no-repeat fixed center; background-size: cover;`)
+    .wrapper
+      h2 ¿Has probado ya uno de los consejos?
+      p Deja tu voto para que otros lectores sepan si te funcionó
+  .wrapper
+    .tips
+      each tip, index in tips
+        if index > 39
+          +tipCard(tip, index)

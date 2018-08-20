@@ -114,17 +114,23 @@
       .gracias {
         padding: 20px 0;
       }
-      form input {
-        width: auto;
-        padding: 12px;
-        border-radius: 50%;
-        margin: 0;
-        display: inline-block;
-        background: transparent;
-        font-size: 19px;
-        &:hover {
-          // background: $purple;
-          background: #fff;
+      &.voted {
+        background: $lightPurple;
+      }
+      form {
+        display: table;
+        margin: 0 auto;
+        input {
+          width: auto;
+          padding: 12px;
+          border-radius: 50%;
+          margin: 0;
+          display: inline-block;
+          background: transparent;
+          font-size: 19px;
+          &:hover {
+            background: #fff;
+          }
         }
       }
     }

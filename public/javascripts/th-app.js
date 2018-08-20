@@ -1,31 +1,12 @@
 import '../sass/style.scss';
 
 import { $, $$ } from './modules/bling';
+import registerClick from './modules/click';
 import registerVote from './modules/vote';
-import registerClick from './modules/expand';
-// import addExtraBlock from './modules/extra';
-// import detectPajita from './modules/pajita';
+import showAllTips from './modules/show';
 
-// Registers clicks to db when click on tip title (only when showing)
-$$('.tip .title').on('click', function(e) {
-  e.preventDefault();
-  this.parentNode.classList.toggle('show');
-  if (this.parentNode.classList.contains('show')) {
-    registerClick(e);
-  }
-});
-
-// Registers clicks to db when click on tip number (only when showing)
-$$('.tip .num').on('click', function(e) {
-  e.preventDefault();
-  this.parentNode.classList.toggle('show');
-  if (this.parentNode.classList.contains('show')) {
-    registerClick(e);
-  }
-});
-
-// Registers click to db when click on the vote number
-$$('.tip .votes').on('click', function(e) {
+// Shows tip & registers clicks to db when click on tip num, title, or votes
+$$('.tip .header').on('click', function(e) {
   e.preventDefault();
   this.parentNode.classList.toggle('show');
   if (this.parentNode.classList.contains('show')) {
@@ -47,10 +28,5 @@ $$('.tip').on('mouseout', function() {
 $$('.vote-forms .up').on('click', registerVote);
 $$('.vote-forms .down').on('click', registerVote);
 
-// Checks for word "pajita" and adds "<abbr>" tags around it
-// ??
-
-// Try to add a block before the tip number 20
-// const numBefore = $$('.num')[19].parentNode;
-
-// addExtraBlock(numBefore);
+// Shows all tips (adds class 'show' to all tips)
+$('.show-all-button').on('click', showAllTips);

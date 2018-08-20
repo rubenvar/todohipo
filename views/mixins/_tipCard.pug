@@ -1,9 +1,9 @@
 mixin tipCard(tip, index)
   - const tipNum = index + 1;
   .tip(id=`tip-${tip._id}`)
-    p.num= tipNum
-    h3.title= tip.name
-    .votes(id=`votes-${tip._id}`)
+    p.num.header= tipNum
+    h3.title.header= tip.name
+    .votes.header(id=`votes-${tip._id}`)
       //- if user already voted, show only total votes 
       p.total(id=`total-${tip._id}`) #{tip.votes}
     .more-text
@@ -21,6 +21,8 @@ mixin tipCard(tip, index)
             input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)
             input(type="submit" value="💣 Delete this tip")
     if tip.ips.includes(ip)
+      .vote-forms.voted
+        p.vota.gracias Muchas gracias por tu voto!
     else
       .vote-forms
         - const randomNumber = Math.floor(Math.random() * (h.votePhrases.length))

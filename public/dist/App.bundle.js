@@ -953,30 +953,7 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _axios = __webpack_require__(3);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function registerClick(e) {
-  var id = e.target.id.split('-')[1];
-  _axios2.default.post('/api/count-click', { id: id }).catch(console.error);
-}
-
-exports.default = registerClick;
-
-/***/ }),
+/* 10 */,
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1813,43 +1790,26 @@ __webpack_require__(12);
 
 var _bling = __webpack_require__(2);
 
+var _click = __webpack_require__(38);
+
+var _click2 = _interopRequireDefault(_click);
+
 var _vote = __webpack_require__(11);
 
 var _vote2 = _interopRequireDefault(_vote);
 
-var _expand = __webpack_require__(10);
+var _show = __webpack_require__(37);
 
-var _expand2 = _interopRequireDefault(_expand);
+var _show2 = _interopRequireDefault(_show);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import addExtraBlock from './modules/extra';
-// import detectPajita from './modules/pajita';
-
-// Registers clicks to db when click on tip title (only when showing)
-(0, _bling.$$)('.tip .title').on('click', function (e) {
+// Shows tip & registers clicks to db when click on tip num, title, or votes
+(0, _bling.$$)('.tip .header').on('click', function (e) {
   e.preventDefault();
   this.parentNode.classList.toggle('show');
   if (this.parentNode.classList.contains('show')) {
-    (0, _expand2.default)(e);
-  }
-});
-
-// Registers clicks to db when click on tip number (only when showing)
-(0, _bling.$$)('.tip .num').on('click', function (e) {
-  e.preventDefault();
-  this.parentNode.classList.toggle('show');
-  if (this.parentNode.classList.contains('show')) {
-    (0, _expand2.default)(e);
-  }
-});
-
-// Registers click to db when click on the vote number
-(0, _bling.$$)('.tip .votes').on('click', function (e) {
-  e.preventDefault();
-  this.parentNode.classList.toggle('show');
-  if (this.parentNode.classList.contains('show')) {
-    (0, _expand2.default)(e);
+    (0, _click2.default)(e);
   }
 });
 
@@ -1867,13 +1827,63 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _bling.$$)('.vote-forms .up').on('click', _vote2.default);
 (0, _bling.$$)('.vote-forms .down').on('click', _vote2.default);
 
-// Checks for word "pajita" and adds "<abbr>" tags around it
-// ??
+// Shows all tips (adds class 'show' to all tips)
+(0, _bling.$)('.show-all-button').on('click', _show2.default);
 
-// Try to add a block before the tip number 20
-// const numBefore = $$('.num')[19].parentNode;
+/***/ }),
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// addExtraBlock(numBefore);
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bling = __webpack_require__(2);
+
+var tips = (0, _bling.$$)('.tip');
+
+function showAllTips() {
+  tips.map(function (tip) {
+    tip.classList.add('show');
+  });
+};
+
+exports.default = showAllTips;
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _axios = __webpack_require__(3);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function registerClick(e) {
+  // Gets the id of the parent of the clicked elem (num, title or votes) and get the _id of the tip
+  var id = e.target.parentNode.id.split('-')[1];
+  // Posts the _id to store click 
+  _axios2.default.post('/api/count-click', { id: id }).catch(console.error);
+}
+
+exports.default = registerClick;
 
 /***/ })
 /******/ ]);

@@ -30,7 +30,7 @@ exports.getBgPhotoData = (req, res, next) => {
     })
     .catch(err => {
       // If error, user fallback photo
-      console.log(err);
+      console.log('There was an Error: ' + err.code);
       res.locals.bgPhoto = '/images/cover/phone.jpg';
       res.locals.pgPhotoAuthor = null;
       next();
