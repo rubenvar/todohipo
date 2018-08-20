@@ -12,11 +12,35 @@ const multerOptions = {
         }
     }
 };
+const axios = require('axios');
+
+exports.getBgPhotoData = (req, res, next) => {
+  const uri = 'https://api.unsplash.com/photos/random?query=doctor';
+  const clientId = process.env.UNSPLASH_ID;
+  axios
+    .get(uri, { headers: { "Authorization": `Client-ID ${clientId}` } })
+    .then(resp => {
+      res.locals.bgPhoto = resp.data.urls.regular;
+      res.locals.pgPhotoAuthor = {
+        user: resp.data.user.name,
+        link: resp.data.user.links.html
+      };
+      next();
+    })
+    .catch(err => {
+      console.log(err);
+      res.locals.bgPhoto = '/images/cover/phone.jpg';
+      res.locals.pgPhotoAuthor = null;
+      next();
+    })
+};
 
 exports.renderMain = async (req, res) => {
   const tips = await Tip.find();
   const title = `todohipo: ${tips.length ? tips.length : 'más de 50'} formas de quitar el hipo, la mayor guía en español`;
-  res.render('main', { title, tips });
+  const photo = res.locals.bgPhoto;
+  const author = res.locals.pgPhotoAuthor;
+  res.render('main', { tips, title, photo, author });
 };
 
 exports.renderPrivacyPolicy = (req, res) => {

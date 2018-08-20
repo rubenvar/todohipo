@@ -5,7 +5,7 @@ const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
-router.get('/', catchErrors(appController.renderMain));
+router.get('/', appController.getBgPhotoData, catchErrors(appController.renderMain));
 router.get('/politica-de-privacidad', appController.renderPrivacyPolicy);
 
 router.get('/register', userController.renderRegister);

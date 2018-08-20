@@ -5,7 +5,12 @@ include mixins/_tipCard
 block vars
   - bodyClass = 'main';
 block cover
-  .cover
+  .cover(style=`background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.9)), url('${photo}');`)
+    if author
+      p Photo by 
+        a(href=`${author.link}` target="_blank" rel="nofollow") #{author.user}
+        |  on  
+        a(href="https://unsplash.com" target="_blank" rel="nofollow") Unsplash
     .wrapper
       - const num = Math.floor(tips.length / 5) * 5;
       h1 Deja ya de buscar cómo se quita el hipo!
