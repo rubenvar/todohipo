@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const appController = require('../controllers/appController');
 const userController = require('../controllers/userController');
-const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
+
+router.get('/sitemap.xml', appController.renderSitemap);
 
 router.get('/', appController.getBgPhotoData, catchErrors(appController.renderMain));
 router.get('/politica-de-privacidad', appController.renderPrivacyPolicy);
@@ -12,12 +13,12 @@ router.get('/register', userController.renderRegister);
 router.post('/act/register',
   userController.validateRegister,
   catchErrors(userController.register),
-  authController.login
+  userController.login
 );
 
 router.get('/login', userController.renderLogin);
-router.post('/act/login', authController.login);
-router.post('/act/logout', authController.logout);
+router.post('/act/login', userController.login);
+router.post('/act/logout', userController.logout);
 
 router.get('/new', appController.newTip);
 router.post('/add-tip', catchErrors(appController.registerTip));

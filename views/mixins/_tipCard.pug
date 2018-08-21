@@ -3,9 +3,15 @@ mixin tipCard(tip, index)
   .tip(id=`tip-${tip._id}`)
     p.num.header= tipNum
     h3.title.header= tip.name
-    .votes.header(id=`votes-${tip._id}`)
-      //- if user already voted, show only total votes 
-      p.total(id=`total-${tip._id}`) #{tip.votes}
+    .votes.header(id=`votes-${tip._id}`) 
+      if tip.votes.voteNum === 0
+        p.total
+          span.vote-max Sin votos
+      else
+        p.total(id=`total-${tip._id}`) 
+          span.util Utilidad: 
+          | #{tip.votes.avg}
+          span.vote-max  de 5
     .more-text
       .desc!=tip.desc
       - const cats = tip.category.split(',');

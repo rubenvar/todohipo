@@ -1,3 +1,4 @@
+const sm = require('sitemap');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const Tip = mongoose.model('Tip');
@@ -13,10 +14,27 @@ const multerOptions = {
         }
     }
 };
+const sitemap = sm.createSitemap({
+  hostname: 'https://todohipo.com',
+  cacheTime: 600000,
+  urls: [
+    { url: '/',  changefreq: 'daily', priority: 0.3 }
+  ]
+});
+
+exports.renderSitemap = (req, res) => {
+  sitemap.toXML((err, xml) => {
+    if (err) {
+      return res.status(500).end();
+    }
+    res.header('Content-Type', 'application/xml');
+    res.send(xml);
+  });
+};
 
 exports.getBgPhotoData = (req, res, next) => {
-  const uri = 'https://api.unsplash.com/photos/random?query=doctor';
-  const clientId = process.env.UNSPLASH_aID;
+  const uri = 'https://api.unsplash.com/photos/random?query=fruits';
+  const clientId = process.env.UNSPLASH_IDa;
   axios
     .get(uri, { headers: { "Authorization": `Client-ID ${clientId}` } })
     .then(resp => {
@@ -30,7 +48,7 @@ exports.getBgPhotoData = (req, res, next) => {
     })
     .catch(err => {
       // If error, user fallback photo
-      console.log('There was an Error: ' + err.code);
+      console.log('Unsplash Error: ' + err.code);
       res.locals.bgPhoto = '/images/cover/phone.jpg';
       res.locals.pgPhotoAuthor = null;
       next();
@@ -136,8 +154,14 @@ exports.checkVoted = async (req, res, next) => {
 
 exports.registerVote = async (req, res) => {
   const find = { _id: req.params.tipId };
-  const votes = req.params.theVote === 'up' ? 1 : -1; // was the vote up or down?
-  const update = { $inc: { votes }, $addToSet: { ips: res.locals.ip } };
+  const votes = req.params.theVote === 'up' ? 5 : 1; // was the vote up or down?
+  const update = {
+    $inc: {
+      "votes.total": votes,
+      "votes.voteNum": 1
+    },
+    $addToSet: { "ips": res.locals.ip }
+  };
   const options = {
     new: true,
     runValidators: true
@@ -159,7 +183,12 @@ exports.resetClicks = async (req, res) => {
 };
 
 exports.resetVotes = async (req, res) => {
-  const tips = await Tip.updateMany({}, { votes: 0 });
+  const tips = await Tip.updateMany({}, {
+    $set: { 
+      "votes.total": 0,
+      "votes.voteNum": 0
+    }
+  });
   req.flash('success', 'All the votes were reseted');
   res.redirect('back');
 };

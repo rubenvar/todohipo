@@ -1,14 +1,15 @@
 extend layout
 
 block content
-  h1= title
-  form.user.register(action="/act/register" method="POST")
-    label(for="name") Name:
-    input(type="text" id="name" name="name")
-    label(for="email") Email:
-    input(type="email" id="email" name="email")
-    label(for="password") Pass:
-    input(type="password" id="password" name="password")
-    label(for="password-confirm") Pass Again
-    input(type="password" id="password-confirm" name="password-confirm")
-    input(type="submit" value="Register!")
+  .wrapper
+    h1= title
+    form.user.register(action="/act/register" method="POST")
+      label(for="name") Name:
+      input(type="text" id="name" name="name")
+      label(for="email") Email:
+      input(type="email" id="email" name="email")
+      label(for="password") Pass:
+      input(type="password" id="password" name="password")
+      label(for="password-confirm") Pass Again
+      input(type="password" id="password-confirm" name="password-confirm")
+      input(type="submit" value="Register!")

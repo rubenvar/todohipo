@@ -16,10 +16,10 @@ html(lang="es-ES")
 
     .content
       block cover
+
       block messages
-      if locals.flashes
-        .wrapper
-          .inner
+        if locals.flashes
+          .wrapper
             .flash-messages
               - const categories = Object.keys(locals.flashes)
               each category in categories
@@ -27,26 +27,37 @@ html(lang="es-ES")
                   .flash(class=`flash-${category}`)
                     p.flash-text!= message
                     button.flash-remove(onClick="this.parentElement.remove()") &times;
+      
       //- .wrapper
       block content
 
     footer
       .wrapper
+        .end-disclaimer
+          p En situaciones normales el hipo suele irse por si solo y no hace falta ningún tipo de tratamiento. Habitualmente, responde a los métodos más sencillos listados en esta web. Si tu hipo dura demasiado e interfiere con tu sueño, alimentación o actividades diarias, deberías pensar en 
+            strong ir al médico
+            | .
+          p todohipo.com no es una página médica y 
+            strong no se hace responsable de nada de lo que te pase
+            | . Si tienes problemas de salud, no deberías probar estos métodos. Si tu hipo persiste, ve al médico. Todos los consejos listados en este sitio web han sido recopilados a través de diferentes fuentes: recogidos por Internet, métodos caseros, oidos de diferentes personas, etc.
+          p No soy un doctor en medicina y los consejos en este sitio web son eso: consejos. Por supuesto, los remedios y pasos que sigas o dejes de seguir, y cualquier actividad o efecto derivado de ello, son 
+            strong 100% responsabilidad tuya
+            | . 
+          p 
+            strong todohipo.com no se hace responsable de nada
+            | . Como te decía, si el hipo supone un problema muy grave en tu vida, deberías ir al médico.
+        hr
         - const year = (new Date()).getFullYear();
-        p Creado con 💛 por 
-          a(href="https://rubenvara.io/?ref=todohipo.com" target="_blank") Rubén
         p Copyright © #{year} - 
           a(href="/politica-de-privacidad") Política de Privacidad
         if photoCredit
-          p Cover photo by 
+          p Foto de portada por  
             a(href=`${photoCredit.link}` target="_blank" rel="nofollow") #{photoCredit.user}
-            |  on  
+            |  en  
             a(href="https://unsplash.com" target="_blank" rel="nofollow") Unsplash
-          //- |  - 
-          //- a(href="/login") Login here
-          hr
-          .end-disclaimer
-            p todohipo.com no es una página médica y no se hace responsable de nada de lo que te pase. Si tienes problemas de salud, no deberías probar estos métodos. Si tu hipo persiste, ve al médico.
+        p Creado con 💛 por 
+          a(href="https://rubenvara.io/?ref=todohipo.com" target="_blank") Rubén
+        
         if user && user.email === 'hey@rubenvara.io'
           hr
           p

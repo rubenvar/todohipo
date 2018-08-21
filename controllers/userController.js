@@ -1,13 +1,32 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User'); //import here like this because it is already imported in start.js
 const promisify = require('es6-promisify');
+const passport = require('passport');
 
 exports.renderRegister = (req, res) => {
+  if (process.env.NODE_ENV === 'production') {
+    req.flash('error', 'Nope');
+    res.redirect('/');
+    return;
+  }
   res.render('register', { title: 'Register' });
 };
 
 exports.renderLogin = (req, res) => {
   res.render('login', { title: 'Login' });
+};
+
+exports.login = passport.authenticate('local', {
+  failureRedirect: '/login',
+  failureFlash: 'Failed Login!',
+  successRedirect: '/',
+  successFlash: 'You are now logged in! 👍'
+});
+
+exports.logout = (req, res) => {
+  req.logout();
+  req.flash('success', 'You are now logged out! 👋');
+  res.redirect('/');
 };
 
 exports.validateRegister = (req, res, next) => {

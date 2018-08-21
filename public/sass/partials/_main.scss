@@ -1,6 +1,11 @@
 .main {
   header {
     position: absolute;
+    .top {
+      h2 {
+        color: $white;
+      }
+    }
   }
   .content {
     .cover {

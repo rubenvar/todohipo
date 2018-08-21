@@ -43,23 +43,32 @@
         font-size: 24px;
         color: $purple;
         font-weight: 700;
+        .util {
+          display: none;
+        }
+        .vote-max {
+          font-size: 16px;
+          font-weight: 400;
+        }
       }
     }
     &:first-child {
       .votes .total {
         @media all and (max-width: 720px) {
-          &::before {
-            content: "Utilidad: " !important;
+          .util {
+            display: inline;
           }
         }
       }
     }
-    &.hovering, &.show {
+    &.hovering,
+    &.show {
       .votes .total {
-        &::before {
-          content: "Utilidad: ";
+        .util {
+          display: inline;
+          // content: "Utilidad: ";
           @media all and (max-width: 720px) {
-            content: "";
+            display: none;
           }
         }
       }

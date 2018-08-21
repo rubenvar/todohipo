@@ -789,14 +789,19 @@ pre.error {
         font-size: 24px;
         color: #c100f2;
         font-weight: 700; }
+        .tips .tip .votes .total .util {
+          display: none; }
+        .tips .tip .votes .total .vote-max {
+          font-size: 16px;
+          font-weight: 400; }
     @media all and (max-width: 720px) {
-      .tips .tip:first-child .votes .total::before {
-        content: "Utilidad: " !important; } }
-    .tips .tip.hovering .votes .total::before, .tips .tip.show .votes .total::before {
-      content: "Utilidad: "; }
+      .tips .tip:first-child .votes .total .util {
+        display: inline; } }
+    .tips .tip.hovering .votes .total .util, .tips .tip.show .votes .total .util {
+      display: inline; }
       @media all and (max-width: 720px) {
-        .tips .tip.hovering .votes .total::before, .tips .tip.show .votes .total::before {
-          content: ""; } }
+        .tips .tip.hovering .votes .total .util, .tips .tip.show .votes .total .util {
+          display: none; } }
     .tips .tip.show {
       -ms-transform: scale(1);
           transform: scale(1); }
@@ -883,6 +888,8 @@ footer {
 
 .main header {
   position: absolute; }
+  .main header .top h2 {
+    color: #fff; }
 
 .main .content .cover {
   background-repeat: no-repeat;
