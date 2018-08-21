@@ -34,7 +34,7 @@ exports.renderSitemap = (req, res) => {
 
 exports.getBgPhotoData = (req, res, next) => {
   const uri = 'https://api.unsplash.com/photos/random?query=fruits';
-  const clientId = process.env.UNSPLASH_IDa;
+  const clientId = process.env.UNSPLASH_ID;
   axios
     .get(uri, { headers: { "Authorization": `Client-ID ${clientId}` } })
     .then(resp => {
