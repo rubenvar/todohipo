@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /*
+Sitemap: https://todohipo.com/sitemap.xml

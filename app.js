@@ -9,6 +9,7 @@ const passport = require('passport');
 const promisify = require('es6-promisify');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
+const robots = require('express-robots-txt');
 
 const routes = require('./routes/index');
 const helpers = require('./helpers');
@@ -68,23 +69,25 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(robots(__dirname + '/public//uploads/robots.txt'));
+
 // After allllll that above middleware, we finally handle our own routes!
 app.use('/', routes);
 
 // If that above routes didn't work, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
 
-// One of our error handlers will see if these errors are just validation errors
+// Handle the db validation errors
 app.use(errorHandlers.flashValidationErrors);
 
-// Otherwise this was a really bad error we didn't expect! Shoot eh
+// Otherwise this was a really bad error:
 if (app.get('env') === 'development') {
   /* Development Error Handler - Prints stack trace */
   app.use(errorHandlers.developmentErrors);
 }
 
-// production error handler
+// Production error handler
 app.use(errorHandlers.productionErrors);
 
-// done! we export it so we can start the site in start.js
+// Done! Export it so the site is started in start.js
 module.exports = app;

@@ -6,12 +6,12 @@ mixin tipCard(tip, index)
     .votes.header(id=`votes-${tip._id}`) 
       if tip.votes.voteNum === 0
         p.total
-          span.vote-max Sin votos
+          span.no-voted Sin votos
       else
         p.total(id=`total-${tip._id}`) 
-          span.util Utilidad: 
+          span.util.hov Utilidad: 
           | #{tip.votes.avg}
-          span.vote-max  de 5
+          span.vote-max.hov  de 5
     .more-text
       .desc!=tip.desc
       - const cats = tip.category.split(',');

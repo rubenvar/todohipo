@@ -49,7 +49,7 @@ const tipSchema = new Schema({
 
 // Set a virtual field 'votes.avg' with the average
 tipSchema.virtual('votes.avg').get(function() {
-  let avg = Math.round((this.votes.total / this.votes.voteNum) * 100) / 100;
+  let avg = Math.round((this.votes.total / this.votes.voteNum) * 10) / 10;
   if (!avg) {
     avg = 0;
   }

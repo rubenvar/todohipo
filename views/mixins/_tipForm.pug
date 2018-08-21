@@ -10,10 +10,6 @@ mixin tipForm(tip = {})
       });
     - const category = tip.category || []
     ul.cats-form
-      //- each choice in h.categories
-      //-   .cat-radio
-      //-     input(type="radio" id=choice value=choice name="category" checked=(category.includes(choice)))
-      //-     label(for=choice) #{choice}
       each choice in h.categories
         .cat-checkbox
           input(type="checkbox" id=choice value=choice name="category" checked=(category.includes(choice)))

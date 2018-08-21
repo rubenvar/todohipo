@@ -5,6 +5,9 @@
   padding: 5px 0;
   grid-template-columns: 1fr;
   justify-items: left;
+  @media only screen and (max-width: 720px) {
+    justify-items: center;
+  }
   h2 {
     font-family: 'Permanent Marker', cursive;
     color: $purple;
@@ -13,5 +16,8 @@
     font-size: 35px;
     line-height: 1;
     text-transform: none;
+    @media only screen and (max-width: 720px) {
+      font-size: 28px;
+    }
   }
 }

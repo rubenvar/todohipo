@@ -19,9 +19,12 @@ header {
 .wrapper {
   max-width: 900px;
   margin: 0 auto; }
-  @media all and (max-width: 920px) {
+  @media only screen and (max-width: 920px) {
     .wrapper {
       margin: 0 30px; } }
+  @media only screen and (max-width: 720px) {
+    .wrapper {
+      margin: 0 10px; } }
 
 html {
   box-sizing: border-box; }
@@ -641,7 +644,7 @@ p.add-option {
     transform: translateX(0px); } }
 
 .flash {
-  background: white;
+  background: #fff;
   margin: 20px 0 0;
   padding: 20px;
   position: relative;
@@ -674,7 +677,7 @@ p.add-option {
   .flash:after {
     content: '';
     display: block;
-    background: white;
+    background: #fff;
     position: absolute;
     width: calc(100% - 16px);
     height: calc(100% - 16px);
@@ -701,6 +704,10 @@ p.add-option {
       grid-template-columns: 1fr;
   -ms-grid-column-align: left;
       justify-items: left; }
+  @media only screen and (max-width: 720px) {
+    .top {
+      -ms-grid-column-align: center;
+          justify-items: center; } }
   .top h2 {
     font-family: 'Permanent Marker', cursive;
     color: #c100f2;
@@ -709,6 +716,9 @@ p.add-option {
     font-size: 35px;
     line-height: 1;
     text-transform: none; }
+    @media only screen and (max-width: 720px) {
+      .top h2 {
+        font-size: 28px; } }
 
 .hide {
   text-indent: -999999px;
@@ -724,7 +734,7 @@ p.add-option {
 
 pre.error {
   padding: 5rem;
-  background: white;
+  background: #fff;
   line-height: 3;
   white-space: pre-line; }
 
@@ -764,6 +774,12 @@ pre.error {
     -ms-grid-columns: 1fr 8fr 2fr;
         grid-template-columns: 1fr 8fr 2fr;
     grid-gap: 10px; }
+    @media only screen and (max-width: 720px) {
+      .tips .tip {
+        padding: 20px 10px;
+        margin-bottom: 20px;
+        -ms-grid-columns: auto;
+            grid-template-columns: auto; } }
     .tips .tip:last-child {
       margin-bottom: 0; }
     .tips .tip:hover {
@@ -777,44 +793,80 @@ pre.error {
       line-height: 1;
       font-family: 'Permanent Marker', cursive;
       justify-self: center; }
+      @media only screen and (max-width: 720px) {
+        .tips .tip .num {
+          display: none; } }
     .tips .tip .title {
       margin: 0;
       cursor: pointer;
       font-size: 26px; }
+      @media only screen and (max-width: 720px) {
+        .tips .tip .title {
+          justify-self: center;
+          text-align: center; } }
     .tips .tip .votes {
       text-align: center;
       cursor: pointer; }
+      @media only screen and (max-width: 720px) {
+        .tips .tip .votes {
+          display: none;
+          font-style: italic; } }
       .tips .tip .votes .total {
         margin: 0;
         font-size: 24px;
         color: #c100f2;
         font-weight: 700; }
-        .tips .tip .votes .total .util {
+        @media only screen and (max-width: 720px) {
+          .tips .tip .votes .total {
+            font-size: 22px; } }
+        .tips .tip .votes .total .util,
+        .tips .tip .votes .total .no-voted {
           display: none; }
-        .tips .tip .votes .total .vote-max {
+        .tips .tip .votes .total .util,
+        .tips .tip .votes .total .vote-max,
+        .tips .tip .votes .total .no-voted {
           font-size: 16px;
           font-weight: 400; }
-    @media all and (max-width: 720px) {
-      .tips .tip:first-child .votes .total .util {
-        display: inline; } }
-    .tips .tip.hovering .votes .total .util, .tips .tip.show .votes .total .util {
+    .tips .tip.hovering .votes .total .util,
+    .tips .tip.hovering .votes .total .no-voted, .tips .tip.show .votes .total .util,
+    .tips .tip.show .votes .total .no-voted {
       display: inline; }
-      @media all and (max-width: 720px) {
-        .tips .tip.hovering .votes .total .util, .tips .tip.show .votes .total .util {
-          display: none; } }
     .tips .tip.show {
       -ms-transform: scale(1);
           transform: scale(1); }
-      .tips .tip.show .more-text,
+      .tips .tip.show .more-text {
+        display: block; }
       .tips .tip.show .vote-forms {
         display: block; }
+        @media only screen and (max-width: 720px) {
+          .tips .tip.show .vote-forms {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr; } }
+      @media only screen and (max-width: 720px) {
+        .tips .tip.show .votes {
+          display: block;
+          -ms-grid-column: 1;
+              grid-column-start: 1; } }
     .tips .tip .more-text {
       display: none;
       -ms-grid-column: 2;
           grid-column-start: 2;
       margin-top: 15px; }
+      @media only screen and (max-width: 720px) {
+        .tips .tip .more-text {
+          -ms-grid-column: 1;
+              grid-column-start: 1; } }
+      @media only screen and (max-width: 720px) {
+        .tips .tip .more-text .desc p, .tips .tip .more-text .desc ul, .tips .tip .more-text .desc ol, .tips .tip .more-text .desc blockquote {
+          font-size: 18px;
+          margin-bottom: 18px; } }
       .tips .tip .more-text .cats {
         margin: 30px 0; }
+        @media only screen and (max-width: 720px) {
+          .tips .tip .more-text .cats {
+            margin: 20px 0 10px; } }
         .tips .tip .more-text .cats .cat {
           display: inline-block;
           background: #ddd;
@@ -822,6 +874,10 @@ pre.error {
           padding: 5px;
           color: #202020;
           margin-right: 15px; }
+          @media only screen and (max-width: 720px) {
+            .tips .tip .more-text .cats .cat {
+              font-size: 18px;
+              margin-bottom: 10px; } }
           .tips .tip .more-text .cats .cat:last-child {
             margin-right: 0; }
       .tips .tip .more-text .user {
@@ -836,17 +892,26 @@ pre.error {
       -ms-grid-column: 3;
           grid-column-start: 3;
       background: #c100f2;
-      /* #eee */
       color: #fff;
       border-radius: 10px;
       padding: 15px 5px;
       text-align: center;
       margin: 0 8px; }
+      @media only screen and (max-width: 720px) {
+        .tips .tip .vote-forms {
+          -ms-grid-column: 1;
+              grid-column-start: 1;
+          justify-self: center;
+          padding: 15px 40px; } }
       .tips .tip .vote-forms .vota {
         padding-bottom: 10px;
         font-size: 17px;
         margin-bottom: 0;
         line-height: 1.4; }
+        @media only screen and (max-width: 720px) {
+          .tips .tip .vote-forms .vota {
+            -ms-grid-column: span 2;
+                grid-column-start: span 2; } }
       .tips .tip .vote-forms .gracias {
         padding: 20px 0; }
       .tips .tip .vote-forms.voted {
@@ -899,14 +964,29 @@ footer {
   padding: calc(50px + 30px) 0 30px;
   text-align: center;
   color: #131313; }
+  @media only screen and (max-width: 720px) {
+    .main .content .cover {
+      padding: calc(38px + 20px) 0 20px; } }
   .main .content .cover h1 {
     margin: 0 0 25px;
     font-size: 52px; }
+    @media only screen and (max-width: 720px) {
+      .main .content .cover h1 {
+        font-size: 36px; } }
   .main .content .cover h2 {
     font-size: 34px;
     margin: 34px 0; }
+    @media only screen and (max-width: 720px) {
+      .main .content .cover h2 {
+        font-size: 28px;
+        margin: 18px 0; } }
   .main .content .cover p {
     font-size: 28px; }
+    @media only screen and (max-width: 720px) {
+      .main .content .cover p {
+        font-size: 23px;
+        line-height: 1.3;
+        margin-bottom: 18px; } }
   .main .content .cover.inter-block {
     padding: 90px 0;
     margin: 60px 0; }

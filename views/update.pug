@@ -6,7 +6,3 @@ block content
   .wrapper
     h1 Edit tip:
     +tipForm(tip)
-    form(action="/delete" method="POST")
-      label(for="tip-id") Tip Id:
-      input(type="text" name="tip" id="tip-id" readonly value=tip._id)
-      input(type="submit" value="💣 Delete this tip")

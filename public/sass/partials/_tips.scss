@@ -14,6 +14,11 @@
     display: grid;
     grid-template-columns: 1fr 8fr 2fr;
     grid-gap: 10px;
+    @media only screen and (max-width: 720px) {
+      padding: 20px 10px;
+      margin-bottom: 20px;
+      grid-template-columns: auto;
+    }
     &:last-child {
       margin-bottom: 0;
     }
@@ -21,7 +26,6 @@
       transform: scale(1);
     }
     .num {
-      // color: $purple;
       color: #777;
       cursor: pointer;
       font-size: 35px;
@@ -29,63 +33,94 @@
       line-height: 1;
       font-family: 'Permanent Marker', cursive;
       justify-self: center;
+      @media only screen and (max-width: 720px) {
+        display: none;
+      }
     }
     .title {
       margin: 0;
       cursor: pointer;
       font-size: 26px;
+      @media only screen and (max-width: 720px) {
+        justify-self: center;
+        text-align: center;
+      }
     }
     .votes {
       text-align: center;
       cursor: pointer;
+      @media only screen and (max-width: 720px) {
+        display: none;
+        font-style: italic;
+      }
       .total {
         margin: 0;
         font-size: 24px;
         color: $purple;
         font-weight: 700;
-        .util {
+        @media only screen and (max-width: 720px) {
+          font-size: 22px;
+        }
+        .util,
+        .no-voted {
           display: none;
         }
-        .vote-max {
+        .util,
+        .vote-max,
+        .no-voted {
           font-size: 16px;
           font-weight: 400;
-        }
-      }
-    }
-    &:first-child {
-      .votes .total {
-        @media all and (max-width: 720px) {
-          .util {
-            display: inline;
-          }
         }
       }
     }
     &.hovering,
     &.show {
       .votes .total {
-        .util {
+        .util,
+        .no-voted {
           display: inline;
-          // content: "Utilidad: ";
-          @media all and (max-width: 720px) {
-            display: none;
-          }
         }
       }
     }
     &.show {
       transform: scale(1);
-      .more-text,
+      .more-text {
+        display: block;
+      }
       .vote-forms {
         display: block;
+        @media only screen and (max-width: 720px) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media only screen and (max-width: 720px) {
+        .votes {
+          display: block;
+          grid-column-start: 1;
+        }
       }
     }
     .more-text {
       display: none;
       grid-column-start: 2;
       margin-top: 15px;
+      @media only screen and (max-width: 720px) {
+        grid-column-start: 1;
+      }
+      .desc {
+        p, ul, ol, blockquote {
+          @media only screen and (max-width: 720px) {
+            font-size: 18px;
+            margin-bottom: 18px;
+          }
+        }
+      }
       .cats {
         margin: 30px 0;
+        @media only screen and (max-width: 720px) {
+          margin: 20px 0 10px;
+        }
         .cat {
           display: inline-block;
           background: $grey;
@@ -93,6 +128,10 @@
           padding: 5px;
           color: $black;
           margin-right: 15px;
+          @media only screen and (max-width: 720px) {
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
           &:last-child {
             margin-right: 0;
           }
@@ -108,17 +147,25 @@
     .vote-forms {
       display: none;
       grid-column-start: 3;
-      background: $purple; /* #eee */
+      background: $purple;
       color: #fff;
       border-radius: 10px;
       padding: 15px 5px;
       text-align: center;
       margin: 0 8px;
+      @media only screen and (max-width: 720px) {
+        grid-column-start: 1;
+        justify-self: center;
+        padding: 15px 40px;
+      }
       .vota {
         padding-bottom: 10px;
         font-size: 17px;
         margin-bottom: 0;
         line-height: 1.4;
+        @media only screen and (max-width: 720px) {
+          grid-column-start: span 2;
+        }
       }
       .gracias {
         padding: 20px 0;

@@ -4,12 +4,10 @@ html {
 
 body {
   position: relative;
-  // background: $white;
   min-height: 100vh;
 }
 
 header {
-  // border: 1px solid red;
   width: 100%;
   position: relative;
   background: transparent;
@@ -25,7 +23,10 @@ header {
 .wrapper {
   max-width: 900px;
   margin: 0 auto;
-  @media all and (max-width: 920px) {
+  @media only screen and (max-width: 920px) {
     margin: 0 30px;
+  }
+  @media only screen and (max-width: 720px) {
+    margin: 0 10px;
   }
 }

@@ -11,9 +11,9 @@ block vars
 block cover
   .cover(style=`background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.9)), url('${photo}') no-repeat fixed center; background-size: cover;`)
     .wrapper
-      - const num = Math.floor(tips.length / 5) * 5;
+      - const num = Math.floor((tips.length - 1) / 5) * 5;
       h1 Deja ya de buscar cómo se quita el hipo!
-      p.big
+      p
         em ¿Acaba de darte un ataque y quieres curarlo AHORA MISMO?
       h2 👇 Mira aquí más de #{num} remedios para el hipo 👇
       p Elige uno, lee las instrucciones, y pruébalo
@@ -32,14 +32,5 @@ block content
   .wrapper
     .tips
       each tip, index in tips
-        if index > 14 && index < 40
-          +tipCard(tip, index)
-  .cover.inter-block(style=`background: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,.5), rgba(255,255,255,1)), url('${photo}') no-repeat fixed center; background-size: cover;`)
-    .wrapper
-      h2 ¿Has probado ya uno de los consejos?
-      p Deja tu voto para que otros lectores sepan si te funcionó
-  .wrapper
-    .tips
-      each tip, index in tips
-        if index > 39
+        if index > 14
           +tipCard(tip, index)
