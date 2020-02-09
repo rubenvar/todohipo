@@ -6,6 +6,6 @@ function showAllTips() {
   tips.map(tip => {
     tip.classList.add('show');
   });
-};
+}
 
 export default showAllTips;

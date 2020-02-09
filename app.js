@@ -38,13 +38,15 @@ app.use(cookieParser());
 
 // Sessions allow us to store data on visitors from request to request
 // This keeps users logged in and allows us to send flash messages
-app.use(session({
-  secret: process.env.SECRET,
-  key: process.env.KEY,
-  resave: false,
-  saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
-}));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    key: process.env.KEY,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+);
 
 // Passport JS is what we use to handle our logins
 app.use(passport.initialize());
@@ -58,7 +60,9 @@ app.use((req, res, next) => {
   res.locals.h = helpers; // some misc helper functions
   res.locals.flashes = req.flash(); // the flash messages
   res.locals.user = req.user || null; // the user data if they are authenticated
-  res.locals.ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.connection.remoteAddress;
+  res.locals.ip = req.headers['x-forwarded-for']
+    ? req.headers['x-forwarded-for'].split(',')[0]
+    : req.connection.remoteAddress;
   res.locals.currentPath = req.path; // the path
   next();
 });
@@ -69,7 +73,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(robots(__dirname + '/public//uploads/robots.txt'));
+// Add a robots.txt file (creo que no funciona)
+app.use(robots(`${__dirname}/public//uploads/robots.txt`));
 
 // After allllll that above middleware, we finally handle our own routes!
 app.use('/', routes);

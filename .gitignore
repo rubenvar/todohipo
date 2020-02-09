@@ -3,6 +3,8 @@ public/ckeditor/
 .DS_Store
 *.log
 .idea
+extra/
 haters/
+.env
 variables.env
 variables.env.now

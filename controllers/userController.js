@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('User'); //import here like this because it is already imported in start.js
+
+const User = mongoose.model('User'); // import here like this because it is already imported in start.js
 const promisify = require('es6-promisify');
 const passport = require('passport');
 
@@ -20,7 +21,7 @@ exports.login = passport.authenticate('local', {
   failureRedirect: '/login',
   failureFlash: 'Failed Login!',
   successRedirect: '/',
-  successFlash: 'You are now logged in! 👍'
+  successFlash: 'You are now logged in! 👍',
 });
 
 exports.logout = (req, res) => {
@@ -36,17 +37,28 @@ exports.validateRegister = (req, res, next) => {
   req.sanitizeBody('email').normalizeEmail({
     remove_dots: false,
     remove_exension: false,
-    gmail_remove_subaddress: false
+    gmail_remove_subaddress: false,
   });
   req.checkBody('password', 'Password cannot be Blank!').notEmpty();
-  req.checkBody('password-confirm', 'Confirmed Password cannot be Blank!').notEmpty();
-  req.checkBody('password-confirm', 'Oops! Your passwords do not match').equals(req.body.password);
+  req
+    .checkBody('password-confirm', 'Confirmed Password cannot be Blank!')
+    .notEmpty();
+  req
+    .checkBody('password-confirm', 'Oops! Your passwords do not match')
+    .equals(req.body.password);
 
   const errors = req.validationErrors();
 
   if (errors) {
-    req.flash('error', errors.map(err => err.msg));
-    res.render('register', { title: 'Register', body: req.body, flashes: req.flash() });
+    req.flash(
+      'error',
+      errors.map(err => err.msg)
+    );
+    res.render('register', {
+      title: 'Register',
+      body: req.body,
+      flashes: req.flash(),
+    });
     return;
   }
   next();

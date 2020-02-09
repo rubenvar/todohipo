@@ -1,51 +1,57 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 // mongoose.Promise = global.Promise; // it's there to suppress the error even if it's added in start.js already
 
-const tipSchema = new Schema({
-  name: {
-    type: String,
-    trim: true,
-    required: 'Supply a title for this tip'
-  },
-  desc: {
-    type: String,
-    trim: true
-  },
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  votes: {
-    voteNum: {
-      type: Number,
-      default: 0
+const tipSchema = new Schema(
+  {
+    name: {
+      type: String,
+      trim: true,
+      required: 'Supply a title for this tip',
     },
-    total: {
+    desc: {
+      type: String,
+      trim: true,
+    },
+    created: {
+      type: Date,
+      default: Date.now,
+    },
+    votes: {
+      voteNum: {
+        type: Number,
+        default: 0,
+      },
+      total: {
+        type: Number,
+        default: 0,
+      },
+    },
+    category: {
+      type: String,
+      trim: true,
+      required: 'Supply a category',
+    },
+    ips: [
+      {
+        type: String,
+      },
+    ],
+    clicks: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
-  category: {
-    type: String,
-    trim: true,
-    required: 'Supply a category'
-  },
-  ips: [{
-    type: String
-  }],
-  clicks: {
-    type: Number,
-    default: 0
-  }
-}, {
-  toObject: {
-    virtuals: true
-  },
+  {
+    toObject: {
+      virtuals: true,
+    },
     toJSON: {
-  virtuals: true 
+      virtuals: true,
+    },
   }
-});
+);
 
 // Set a virtual field 'votes.avg' with the average
 tipSchema.virtual('votes.avg').get(function() {

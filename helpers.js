@@ -6,13 +6,22 @@
 const fs = require('fs');
 
 // Dump is a handy debugging function we can use to sort of "console.log" our data
-exports.dump = (obj) => JSON.stringify(obj, null, 2);
+exports.dump = obj => JSON.stringify(obj, null, 2);
 
 // The categories for the tips
-exports.categories = ['mental', 'agua', 'bebidas', 'alimentos', 'ayudante', 'respiración', 'físico'];
+exports.categories = [
+  'mental',
+  'agua',
+  'bebidas',
+  'alimentos',
+  'ayudante',
+  'respiración',
+  'físico',
+];
 
 // The site description used in various places
-exports.siteDescription = 'Aquí tienes un montón de remedios y consejos para quitar el hipo. La mayor guía online, con más de 50 trucos para parar un ataque de hipo. Puedes probar varios, y elegir el más efectivo para ti!';
+exports.siteDescription =
+  'Aquí tienes remedios y consejos para quitar el hipo. La mayor guía online, más de 50 trucos para parar un ataque de hipo. Prueba varios y alige el más efectivo!';
 
 // Phrases for Tip Voting buttons
 exports.votePhrases = [
@@ -20,5 +29,5 @@ exports.votePhrases = [
   '¿Te sirvió?',
   'Deja tu opinión!',
   '¿Curó tu hipo?',
-  '¿Ha sido útil?'
+  '¿Ha sido útil?',
 ];
