@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// import environmental variables from our variables.env file
+//  import environmental variables from our variables.env file
 require('dotenv');
 
 // Connect to our Database and handle any bad connections
