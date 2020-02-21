@@ -74,7 +74,7 @@ app.use((req, res, next) => {
 });
 
 // Add a robots.txt file (creo que no funciona)
-app.use(robots(`${__dirname}/public//uploads/robots.txt`));
+app.use(robots(`${__dirname}/public/uploads/robots.txt`));
 
 // After allllll that above middleware, we finally handle our own routes!
 app.use('/', routes);
