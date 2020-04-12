@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const promisify = require('es6-promisify');
 const flash = require('connect-flash');
-const expressValidator = require('express-validator');
+// const expressValidator = require('express-validator');
 const robots = require('express-robots-txt');
 
 const routes = require('./routes/index');
@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Exposes a bunch of methods for validating data. Used heavily on userController.validateRegister
-app.use(expressValidator());
+// app.use(expressValidator()); // now directly on userController (v6...)
 
 // populates req.cookies with any cookies that came along with the request
 app.use(cookieParser());
@@ -68,10 +68,10 @@ app.use((req, res, next) => {
 });
 
 // promisify some callback based APIs
-app.use((req, res, next) => {
-  req.login = promisify(req.login, req);
-  next();
-});
+// app.use((req, res, next) => {
+//   req.login = promisify(req.login, req);
+//   next();
+// });
 
 // Add a robots.txt file (creo que no funciona)
 app.use(robots(`${__dirname}/public/uploads/robots.txt`));

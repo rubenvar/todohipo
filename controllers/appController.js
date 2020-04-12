@@ -1,4 +1,4 @@
-const sm = require('sitemap');
+// const sm = require('sitemap');
 const axios = require('axios');
 const mongoose = require('mongoose');
 
@@ -17,21 +17,21 @@ const multerOptions = {
   },
 };
 
-const sitemap = sm.createSitemap({
-  hostname: 'https://todohipo.com',
-  cacheTime: 600000,
-  urls: [{ url: '/', changefreq: 'daily', priority: 0.3 }],
-});
+// const sitemap = sm.createSitemap({
+//   hostname: 'https://todohipo.com',
+//   cacheTime: 600000,
+//   urls: [{ url: '/', changefreq: 'daily', priority: 0.3 }],
+// });
 
-exports.renderSitemap = (req, res) => {
-  sitemap.toXML((err, xml) => {
-    if (err) {
-      return res.status(500).end();
-    }
-    res.header('Content-Type', 'application/xml');
-    res.send(xml);
-  });
-};
+// exports.renderSitemap = (req, res) => {
+//   sitemap.toXML((err, xml) => {
+//     if (err) {
+//       return res.status(500).end();
+//     }
+//     res.header('Content-Type', 'application/xml');
+//     res.send(xml);
+//   });
+// };
 
 exports.getBgPhotoData = (req, res, next) => {
   const uri = 'https://api.unsplash.com/photos/random?query=fruits';

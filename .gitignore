@@ -1,10 +1,7 @@
-node_modules/
-public/ckeditor/
 .DS_Store
+node_modules/
 *.log
 .idea
 extra/
-haters/
 .env
-variables.env
-variables.env.now
+.vscode/

@@ -5,7 +5,7 @@ const appController = require('../controllers/appController');
 const userController = require('../controllers/userController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
-router.get('/sitemap.xml', appController.renderSitemap);
+// router.get('/sitemap.xml', appController.renderSitemap);
 
 router.get(
   '/',
