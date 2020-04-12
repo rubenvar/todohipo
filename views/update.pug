@@ -4,5 +4,8 @@ include mixins/_tipForm
 
 block content
   .wrapper
-    h1 Edit tip:
-    +tipForm(tip)
+    if user && user.email === 'hey@rubenvara.io'
+      h1 Edit tip:
+      +tipForm(tip)
+    else
+      h1 No tienes permiso para editar nada...

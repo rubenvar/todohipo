@@ -17,7 +17,8 @@ router.get('/politica-de-privacidad', appController.renderPrivacyPolicy);
 router.get('/register', userController.renderRegister);
 router.post(
   '/act/register',
-  userController.validateRegister,
+  userController.validations,
+  userController.throwRegisterError,
   catchErrors(userController.register),
   userController.login
 );

@@ -6,9 +6,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const promisify = require('es6-promisify');
+// const { promisify } = require('es6-promisify');
 const flash = require('connect-flash');
-// const expressValidator = require('express-validator');
 const robots = require('express-robots-txt');
 
 const routes = require('./routes/index');
@@ -73,7 +72,7 @@ app.use((req, res, next) => {
 //   next();
 // });
 
-// Add a robots.txt file (creo que no funciona)
+// Add a robots.txt file
 app.use(robots(`${__dirname}/public/uploads/robots.txt`));
 
 // After allllll that above middleware, we finally handle our own routes!

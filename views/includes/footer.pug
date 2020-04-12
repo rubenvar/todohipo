@@ -1,0 +1,52 @@
+.wrapper
+  .end-disclaimer
+    p todohipo.com no es una página médica y 
+      strong no se hace responsable de nada de lo que te pase
+      | .
+    p No soy un doctor en medicina y los consejos en este sitio web son eso: consejos. Han sido aleatoriamente recogidos por Internet, oidos de diferentes personas, son conocidos métodos caseros, etc. Usa el 
+      strong sentido común
+      |  si dispones de él. Si tienes problemas de salud, no deberías probar estos métodos. Si tu hipo persiste, ve al médico.
+    p Por supuesto, los remedios y pasos que sigas o dejes de seguir, y cualquier actividad o efecto derivado de ello, son 
+      strong 100% responsabilidad tuya
+      | . 
+    p Si tu hipo dura demasiado e interfiere con tu sueño, alimentación o actividades diarias, deberías 
+      strong ir al médico
+      | .
+  hr
+  - const year = (new Date()).getFullYear();
+  p Copyright © #{year} - 
+    a(href="/politica-de-privacidad") Política de Privacidad
+  if photoCredit
+    p Foto de portada por  
+      a(href=`${photoCredit.link}?utm_source=todohipo.com&utm_medium=referral` target="_blank" rel="nofollow") #{photoCredit.user}
+      |  en  
+      a(href="https://unsplash.com?utm_source=todohipo.com&utm_medium=referral" target="_blank" rel="nofollow") Unsplash
+  p Creado con 💛 por 
+    a(href="https://rubenvara.io/?ref=todohipo.com" target="_blank") Rubén
+  
+  if user && user.email === 'hey@rubenvara.io'
+    hr
+    p
+      a(href="/update") Update a Tip
+      |  - 
+      a(href="/new") New Tip
+      |  - 
+      a(href="/bulk") Bulk Add Tips
+      |  - 
+      a.show-all-button(href="#") Show all Tips
+      |
+      form.link.logout(action="/act/logout" method="POST")
+        input(type="submit" value="Logout here")
+      |  - 
+      form.link(action="/reset-clicks" method="POST")
+        input(type="submit" value="Reset Tip Clicks")
+      |  - 
+      form.link(action="/reset-votes" method="POST")
+        input(type="submit" value="Reset All Votes")
+      |  - 
+      form.link(action="/reset-ips" method="POST")
+        input(type="submit" value="Reset All Ips")
+      //-|  - 
+      //-form.link(action="/delete-tips" method="POST") Commenting this just in case
+        //-input(type="submit" value="Delete All Tips")
+  else

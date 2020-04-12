@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const User = mongoose.model('User'); // import here like this because it is already imported in start.js
 
-const { check, validationResult } = require('express-validator');
-const promisify = require('es6-promisify');
+const { body, validationResult } = require('express-validator');
 const passport = require('passport');
 
 exports.renderRegister = (req, res) => {
@@ -32,48 +31,39 @@ exports.logout = (req, res) => {
   res.redirect('/');
 };
 
-const theValidationResult = validationResult.withDefaults({
-  formatter: error => ({ msg: error.location }),
-});
+// const theValidationResult = validationResult.withDefaults({
+//   formatter: error => ({ msg: error.location }),
+// });
 
-exports.validateRegister = (req, res, next) => {
-  check('name', 'You must supply a name').notEmpty();
-  check('email', 'That Email is not valid').isEmail();
-  check('email').normalizeEmail({
+exports.validations = [
+  body('name', 'El nombre no puede estar vacío').notEmpty(),
+  body('email', 'El email no puede estar vacío').notEmpty(),
+  body('password', 'La password no puede estar vacía').notEmpty(),
+  body('password-confirm', 'La pass-confirm no puede estar vacía').notEmpty(),
+  body('email', 'El email no es válido').isEmail(),
+  body('password', 'La password es demasiado corta (min 5)').isLength({
+    min: 5,
+  }),
+  body('password-confirm').custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error('Las passwords no coinciden');
+    } else {
+      return value;
+    }
+  }),
+  body('email').normalizeEmail({
     remove_dots: false,
     remove_exension: false,
     gmail_remove_subaddress: false,
-  });
-  check('password', 'Password cannot be Blank!').notEmpty();
-  check('password-confirm', 'Confirmed Password cannot be Blank!').notEmpty();
-  check('password-confirm', 'Oops! Your passwords do not match').equals(
-    req.body.password
-  );
+  }),
+];
 
-  const errors = theValidationResult(req).array();
-
-  // req.sanitizeBody('name');
-  // req.checkBody('name', 'You must supply a name').notEmpty();
-  // req.checkBody('email', 'That Email is not valid').isEmail();
-  // req.sanitizeBody('email').normalizeEmail({
-  //   remove_dots: false,
-  //   remove_exension: false,
-  //   gmail_remove_subaddress: false,
-  // });
-  // req.checkBody('password', 'Password cannot be Blank!').notEmpty();
-  // req
-  //   .checkBody('password-confirm', 'Confirmed Password cannot be Blank!')
-  //   .notEmpty();
-  // req
-  //   .checkBody('password-confirm', 'Oops! Your passwords do not match')
-  //   .equals(req.body.password);
-
-  // const errors = req.validationErrors();
-
-  if (errors) {
+exports.throwRegisterError = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
     req.flash(
       'error',
-      errors.map(err => err.msg)
+      errors.array().map(err => err.msg)
     );
     res.render('register', {
       title: 'Register',
@@ -82,12 +72,12 @@ exports.validateRegister = (req, res, next) => {
     });
     return;
   }
+
   next();
 };
 
 exports.register = async (req, res, next) => {
   const user = new User({ email: req.body.email, name: req.body.name });
-  const registerWithPromise = promisify(User.register, User);
-  await registerWithPromise(user, req.body.password);
+  await User.register(user, req.body.password);
   next();
 };
