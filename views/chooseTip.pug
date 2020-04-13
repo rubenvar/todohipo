@@ -2,7 +2,7 @@ extends layout
 
 block content
   .wrapper
-    if user && user.email === 'hey@rubenvara.io'
+    if user && user.role === 'ADMIN'
       h1 Choose tip to edit:
       form.choose-tip(action="/update-form" method="POST")
         select(name="tip")
@@ -10,4 +10,5 @@ block content
             option(value=`${tip._id}`) #{tip.name}
         input(type="submit" value="Edit")
     else
-      h1 No tienes permiso para editar nada
+      include ./includes/noRights
+

@@ -150,9 +150,10 @@ exports.bulkAddTips = async (req, res) => {
 
 exports.checkVoted = async (req, res, next) => {
   const tip = await Tip.findOne({ _id: req.params.tipId });
-  if (tip.ips.indexOf(res.locals.ip) > -1) {
-  } else {
+  if (tip.ips.indexOf(res.locals.ip) < 0) {
     next();
+  } else {
+    return console.error('already voted');
   }
 };
 

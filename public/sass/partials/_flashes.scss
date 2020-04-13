@@ -18,7 +18,7 @@
   z-index: 1;
   border-radius: 3px;
   display: flex;
-  animation: slideIn forwards .1s ease-in-out 2;
+  animation: slideIn forwards 0.1s ease-in-out 2;
   animation-timing-function: cubic-bezier(0.01, 1.68, 0.58, 1);
   & + .flash {
     animation-delay: 0.55s;
@@ -31,7 +31,7 @@
   }
   &-remove {
     background: none;
-    border:0;
+    border: 0;
     &:hover {
       color: $purple;
     }
@@ -47,7 +47,7 @@
     }
   }
   &:after {
-    content: '';
+    content: "";
     display: block;
     background: $white;
     position: absolute;

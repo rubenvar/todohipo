@@ -14,6 +14,10 @@ exports.renderRegister = (req, res) => {
   res.render('register', { title: 'Register' });
 };
 
+exports.notRenderLogin = (req, res) => {
+  res.redirect('/');
+};
+
 exports.renderLogin = (req, res) => {
   res.render('login', { title: 'Login' });
 };

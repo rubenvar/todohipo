@@ -3,5 +3,10 @@ extends layout
 include mixins/_tipForm
 
 block content
-  h1 New tip:
-  +tipForm()
+  .wrapper
+    if user && user.role === 'ADMIN'
+      h1 New tip:
+      +tipForm()
+    else
+      include ./includes/noRights
+

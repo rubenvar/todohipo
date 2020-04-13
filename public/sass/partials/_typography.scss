@@ -1,19 +1,19 @@
 @font-face {
-  font-family: 'Quicksand';
-  src: url('/fonts/Quicksand-Regular.ttf');
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-Regular.ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Quicksand';
-  src: url('/fonts/Quicksand-Bold.ttf');
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-Bold.ttf");
   font-weight: bold;
 }
 
 @font-face {
-  font-family: 'Permanent Marker';
-  src: url('/fonts/PermanentMarker-Regular.ttf');
+  font-family: "Permanent Marker";
+  src: url("/fonts/PermanentMarker-Regular.ttf");
   font-weight: normal;
   font-style: cursive;
 }
@@ -24,12 +24,17 @@ html {
 
 body {
   font-size: 22px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   color: $black;
 }
 
-h1, h2, h3, h4, h5, h6, {
-  font-family: 'Quicksand', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Quicksand", sans-serif;
   font-weight: 700;
   margin-bottom: 15px;
 }
@@ -47,7 +52,7 @@ h2 {
 
 h3 {
   font-size: 30px;
-  margin-bottom: 18px; 
+  margin-bottom: 18px;
 }
 
 h4 {
@@ -73,10 +78,11 @@ li a {
 p {
   font-size: 22px;
   margin: 0 0 20px;
-  line-height: 1.4
+  line-height: 1.4;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0 0 20px;
   line-height: 1.4;
   li {
@@ -89,12 +95,16 @@ ul {
 }
 
 nav {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 16px;
 }
 
-button, input, optgroup, select, textarea {
-  font-family: 'Quicksand', sans-serif;
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: "Quicksand", sans-serif;
 }
 
 blockquote {

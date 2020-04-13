@@ -39,3 +39,20 @@ pre.error {
     }
   }
 }
+
+.no-rights {
+  .border {
+    margin: 70px 0;
+    height: 40px;
+    width: 100%;
+    background: linear-gradient(
+      135deg,
+      black 33%,
+      yellow 33%,
+      yellow 66%,
+      black 66%
+    );
+    // background-repeat: no-repeat;
+    background-size: 10% 100%;
+  }
+}

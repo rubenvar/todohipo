@@ -23,7 +23,8 @@ router.post(
   userController.login
 );
 
-router.get('/login', userController.renderLogin);
+router.get('/login', userController.notRenderLogin);
+router.get('/l', userController.renderLogin);
 router.post('/act/login', userController.login);
 router.post('/act/logout', userController.logout);
 

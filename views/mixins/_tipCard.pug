@@ -14,11 +14,15 @@ mixin tipCard(tip, index)
           span.vote-max.hov  de 5
     .more-text
       .desc!=tip.desc
-      - const cats = tip.category.split(',');
+      - let cats;
+      if typeof tip.category === 'string'
+        - cats = tip.category.split(',');
+      else
+        - cats = tip.category;
       .cats
         each cat in cats
           p.cat= cat
-      if user && user.email === 'hey@rubenvara.io'
+      if user && user.role === 'ADMIN'
         .user
           form(action="/update-form" method="POST")
             input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)

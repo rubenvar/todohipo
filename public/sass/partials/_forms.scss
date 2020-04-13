@@ -1,4 +1,5 @@
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -11,7 +12,7 @@ input, textarea {
 
 label {
   padding: 0;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
   display: block;
   font-weight: 700;
 }
@@ -33,7 +34,8 @@ button {
 
 .cat-radio,
 .cat-checkbox {
-  input[type="radio"], label {
+  input[type="radio"],
+  label {
     display: inline-block;
     width: auto;
   }
@@ -64,11 +66,11 @@ input[type="submit"] {
   p {
     margin: 0;
   }
-  &.sec{
+  &.sec {
     background-color: $grey;
     color: $black;
     &:hover {
-      background-color: #eee
+      background-color: #eee;
     }
   }
   &:hover {
@@ -85,7 +87,7 @@ form.link {
     display: inline-block;
     color: $purple;
     &:hover {
-      color:$black;
+      color: $black;
     }
   }
 }

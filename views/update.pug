@@ -4,8 +4,9 @@ include mixins/_tipForm
 
 block content
   .wrapper
-    if user && user.email === 'hey@rubenvara.io'
+    if user && user.role === 'ADMIN'
       h1 Edit tip:
       +tipForm(tip)
     else
-      h1 No tienes permiso para editar nada...
+      include ./includes/noRights
+

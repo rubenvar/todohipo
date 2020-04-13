@@ -31,7 +31,7 @@
       font-size: 35px;
       margin: 0;
       line-height: 1;
-      font-family: 'Permanent Marker', cursive;
+      font-family: "Permanent Marker", cursive;
       justify-self: center;
       @media only screen and (max-width: 720px) {
         display: none;
@@ -109,7 +109,10 @@
         grid-column-start: 1;
       }
       .desc {
-        p, ul, ol, blockquote {
+        p,
+        ul,
+        ol,
+        blockquote {
           @media only screen and (max-width: 720px) {
             font-size: 18px;
             margin-bottom: 18px;
