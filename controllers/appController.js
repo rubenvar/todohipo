@@ -85,7 +85,7 @@ exports.registerTip = async (req, res) => {
 exports.chooseTipToUpdate = async (req, res) => {
   const tips = await Tip.find();
   if (!res.locals.user || res.locals.user.role !== 'ADMIN') res.status(401);
-  res.render('chooseTip', { tips });
+  res.render('chooseTip', { title: 'Choose a tip', tips });
 };
 
 exports.renderUpdateForm = async (req, res) => {
