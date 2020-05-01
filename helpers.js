@@ -16,6 +16,8 @@ exports.categories = [
 exports.siteDescription =
   'Aquí tienes remedios y consejos para quitar el hipo. La mayor guía online, más de 50 trucos para parar un ataque de hipo. Prueba varios y alige el más efectivo!';
 
+exports.canonical = 'https://todohipo.com';
+
 // phrases for voting buttons
 exports.votePhrases = [
   '¿Te quitó el hipo?',

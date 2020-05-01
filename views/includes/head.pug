@@ -1,18 +1,17 @@
 meta(charset="utf-8")
-title= `${title}`
-- const canonical = 'https://todohipo.com';
-- const siteDescription = 'Aquí tienes remedios y consejos para quitar el hipo. La mayor guía online, más de 50 trucos para parar un ataque de hipo. Prueba varios y alige el más efectivo!';
+title=`${title}`
 meta(name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1")
+meta(name="description" content=`${h.siteDescription}`)
 link(rel='stylesheet' href='/dist/App.css')
 link(rel="shortcut icon" type="image/png" href="/images/icons/th.png")
-link(rel="canonical" href=`${canonical}`)
+link(rel="canonical" href=`${h.canonical}`)
 
 
 //- FB Open Graph
-meta(property="og:url" content=`${canonical}`)
+meta(property="og:url" content=`${h.canonical}`)
 meta(property="og:title" content=`${title}`)
-meta(property="og:description" content=`${siteDescription}`)
-meta(property="og:image" content=`${canonical}/images/cover/todohipo-fb.jpg`)
+meta(property="og:description" content=`${h.siteDescription}`)
+meta(property="og:image" content=`${h.canonical}/images/cover/todohipo-fb.jpg`)
 meta(property="og:type" content="website")
 meta(property="og:locale" content="es_ES")
 //- meta(property="og:updated_time" content="") Cómo conseguir la fecha de actualizacion (no manual)?
@@ -21,7 +20,7 @@ meta(property="og:ttl" content="345600")
 //- Twitter cards (enough with the ones from FB too)
 meta(name="twitter:card" content="summary")
 meta(name="twitter:creator" content="@rubenvara01")
-meta(name="twitter:image" content=`${canonical}/images/cover/todohipo-tw.jpg`)
+meta(name="twitter:image" content=`${h.canonical}/images/cover/todohipo-tw.jpg`)
 
 if env !== 'development'
   script(async src="https://www.googletagmanager.com/gtag/js?id=UA-85726270-1")
