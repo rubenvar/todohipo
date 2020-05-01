@@ -30,6 +30,8 @@ mixin tipCard(tip, index)
           form(action="/delete" method="POST")
             input(type="text" name="tip" id="tip-id" readonly style="display: none;" value=tip._id)
             input(type="submit" value="💣 Delete this tip")
+          .stats
+            
     if tip.ips.includes(ip)
       .vote-forms.voted
         p.vota.gracias Muchas gracias por tu voto!

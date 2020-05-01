@@ -63,6 +63,7 @@ app.use((req, res, next) => {
     ? req.headers['x-forwarded-for'].split(',')[0]
     : req.connection.remoteAddress;
   res.locals.currentPath = req.path; // the path
+  res.locals.env = process.env.NODE_ENV; // pass only the environment, not the whole process.env object
   next();
 });
 
