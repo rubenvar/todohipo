@@ -91,7 +91,6 @@
     &.hovering,
     &.show {
       .votes .total {
-
         .util,
         .no-voted {
           display: inline;
@@ -133,7 +132,6 @@
       }
 
       .desc {
-
         p,
         ul,
         ol,
@@ -180,6 +178,7 @@
         .stats {
           grid-column: span 2;
           border: 1px solid;
+          padding: 12px;
         }
       }
     }
