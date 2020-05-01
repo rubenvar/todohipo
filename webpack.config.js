@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // .js files
@@ -37,22 +37,16 @@ const styles = {
   ],
 };
 
-// plugins
-// const uglify = new webpack.optimize.UglifyJsPlugin({
-//   compress: { warnings: false },
-// });
-const minMoment = new webpack.ContextReplacementPlugin(
-  /moment[\/\\]locale$/,
-  /en/
-);
-// new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-
 // put it all together
 const config = {
   entry: {
     App: './public/javascripts/th-app.js',
   },
   devtool: 'source-map',
+  // this replaces the uglify plugin
+  optimization: {
+    minimize: true,
+  },
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
     filename: '[name].bundle.js',
@@ -60,13 +54,8 @@ const config = {
   module: {
     rules: [javascript, styles],
   },
-  plugins: [
-    // uglify,
-    minMoment,
-    new MiniCssExtractPlugin('style.css'),
-  ],
+  plugins: [new MiniCssExtractPlugin('style.css')],
   mode: 'development',
 };
-// process.noDeprecation = true;
 
 module.exports = config;

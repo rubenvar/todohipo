@@ -71,7 +71,8 @@ exports.renderPrivacyPolicy = (req, res) => {
 };
 
 exports.newTip = (req, res) => {
-  res.render('newTip');
+  if (!res.locals.user || res.locals.user.role !== 'ADMIN') res.status(401);
+  res.render('newTip', { title: 'New Tip' });
 };
 
 exports.registerTip = async (req, res) => {
@@ -83,6 +84,7 @@ exports.registerTip = async (req, res) => {
 
 exports.chooseTipToUpdate = async (req, res) => {
   const tips = await Tip.find();
+  if (!res.locals.user || res.locals.user.role !== 'ADMIN') res.status(401);
   res.render('chooseTip', { tips });
 };
 
@@ -109,6 +111,7 @@ exports.deleteTip = async (req, res) => {
 };
 
 exports.renderBulkForm = (req, res) => {
+  if (!res.locals.user || res.locals.user.role !== 'ADMIN') res.status(401);
   res.render('bulk-add', { title: 'Bulk Add' });
 };
 

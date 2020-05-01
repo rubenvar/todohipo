@@ -24,8 +24,9 @@ exports.flashValidationErrors = (err, req, res, next) => {
 exports.developmentErrors = (err, req, res, next) => {
   err.stack = err.stack || '';
   const errorDetails = {
-    message: err.message,
+    title: `Error ${err.status}`,
     status: err.status,
+    message: err.message,
     stackHighlighted: err.stack.replace(
       /[a-z_-\d]+.js:\d+:\d+/gi,
       '<mark>$&</mark>'
@@ -43,8 +44,11 @@ exports.developmentErrors = (err, req, res, next) => {
 
 // Production Error Handler: No stacktraces are leaked to user
 exports.productionErrors = (err, req, res, next) => {
-  res.status(err.status || 500);
+  const status = err.status || 500;
+  res.status(status);
   res.render('error', {
+    title: `Error ${status}`,
+    status,
     message: err.message,
     error: {},
   });

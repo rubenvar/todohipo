@@ -6,37 +6,33 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-// const { promisify } = require('es6-promisify');
 const flash = require('connect-flash');
 const robots = require('express-robots-txt');
 
-const routes = require('./routes/index');
+const routes = require('./routes');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
 require('./handlers/passport'); // specify the strategy for passport
 
-// create our Express app
+// create Express app
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views')); // this is the folder where we keep our pug files
-app.set('view engine', 'pug'); // we use the engine pug, mustache or EJS work great too
+app.set('views', path.join(__dirname, 'views')); // this is the folder for pug files
+app.set('view engine', 'pug'); // pug engine
 
-// serves up static files from the public folder. Anything in public/ will just be served up as the file it is
+// serves up static files from the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Takes the raw requests and turns them into usable properties on req.body
+// takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Exposes a bunch of methods for validating data. Used heavily on userController.validateRegister
-// app.use(expressValidator()); // now directly on userController (v6...)
-
-// populates req.cookies with any cookies that came along with the request
+// populates req.cookies with cookies that came along with the request
 app.use(cookieParser());
 
-// Sessions allow us to store data on visitors from request to request
-// This keeps users logged in and allows us to send flash messages
+// sessions to store data on visitors from request to request:
+// keeps users logged in + allows to send flash messages
 app.use(
   session({
     secret: process.env.SECRET,
@@ -47,14 +43,14 @@ app.use(
   })
 );
 
-// Passport JS is what we use to handle our logins
+// passport JS to handle logins
 app.use(passport.initialize());
 app.use(passport.session());
 
-// The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
+// flash middleware to use req.flash('error', 'Oh!'), it will pass the message to the next page
 app.use(flash());
 
-// pass variables to our templates + all requests
+// pass variables to templates + all requests
 app.use((req, res, next) => {
   res.locals.h = helpers; // some misc helper functions
   res.locals.flashes = req.flash(); // the flash messages
@@ -67,32 +63,26 @@ app.use((req, res, next) => {
   next();
 });
 
-// promisify some callback based APIs
-// app.use((req, res, next) => {
-//   req.login = promisify(req.login, req);
-//   next();
-// });
-
-// Add a robots.txt file
+// add a robots.txt file
 app.use(robots(`${__dirname}/public/uploads/robots.txt`));
 
-// After allllll that above middleware, we finally handle our own routes!
+// after allllll that above middleware, finally handle routes
 app.use('/', routes);
 
-// If that above routes didn't work, we 404 them and forward to error handler
+// if routes didn't work, 404 them and forward to next error handler
 app.use(errorHandlers.notFound);
 
-// Handle the db validation errors
+// dandle the db validation errors
 app.use(errorHandlers.flashValidationErrors);
 
-// Otherwise this was a really bad error:
+// dev error handler (with stack trace highlighting):
 if (app.get('env') === 'development') {
   /* Development Error Handler - Prints stack trace */
   app.use(errorHandlers.developmentErrors);
 }
 
-// Production error handler
+// production error handler
 app.use(errorHandlers.productionErrors);
 
-// Done! Export it so the site is started in start.js
+// Done! 🚀
 module.exports = app;

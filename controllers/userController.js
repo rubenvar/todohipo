@@ -15,6 +15,7 @@ exports.renderRegister = (req, res) => {
 };
 
 exports.notRenderLogin = (req, res) => {
+  req.flash('error', 'Nope');
   res.redirect('/');
 };
 
@@ -34,10 +35,6 @@ exports.logout = (req, res) => {
   req.flash('success', 'You are now logged out! 👋');
   res.redirect('/');
 };
-
-// const theValidationResult = validationResult.withDefaults({
-//   formatter: error => ({ msg: error.location }),
-// });
 
 exports.validations = [
   body('name', 'El nombre no puede estar vacío').notEmpty(),

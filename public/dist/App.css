@@ -774,11 +774,14 @@ pre.error {
               margin-bottom: 10px; } }
           .tips .tip .more-text .cats .cat:last-child {
             margin-right: 0; }
-      .tips .tip .more-text .user {
+      .tips .tip .more-text .admin {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 10px;
         margin: 15px 0; }
+        .tips .tip .more-text .admin .stats {
+          grid-column: span 2;
+          border: 1px solid; }
     .tips .tip .vote-forms {
       display: none;
       grid-column-start: 3;
