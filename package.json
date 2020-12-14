@@ -5,7 +5,6 @@
   "scripts": {
     "watch": "nodemon ./start.js --ignore public/",
     "assets": "webpack -w --display-max-modules 0",
-    "dev:mongo": "concurrently \"mongod --quiet\" \"npm run watch\" \"npm run assets\" --names \"🐕,💻,📦\" --prefix name",
     "dev": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
     "start": "node ./start.js"
   },
@@ -33,8 +32,7 @@
     "passport-local-mongoose": "^6.0.1",
     "pug": "^2.0.4",
     "sitemap": "^6.1.0",
-    "validator": "^13.0.0",
-    "webpack-cli": "^3.3.11"
+    "validator": "^13.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -48,7 +46,8 @@
     "nodemon": "^2.0.3",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.2",
-    "webpack": "^4.42.1"
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "description": "¿Cómo quitar el hipo? Mira aquí más de 100 formas de curar el hipo, bebiendo agua o con un susto, tú eliges 👍",
   "main": "app.js",
