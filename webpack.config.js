@@ -1,10 +1,15 @@
+require('dotenv').config();
 const path = require('path');
-// const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+const isDevMode = process.env.NODE_ENV === 'development';
 
 // .js files
 const javascript = {
   test: /\.(js)$/,
+  exclude: '/node_modules/',
   use: [
     {
       loader: 'babel-loader',
@@ -13,28 +18,27 @@ const javascript = {
   ],
 };
 
-// postCSS loader
-// const postcss = {
-//   loader: 'postcss-loader',
-//   options: {
-//     plugins: [],
-//   },
-// };
-
 // sass/css loader
 const styles = {
   test: /\.(scss)$/,
   use: [
+    isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+    'css-loader',
     {
-      loader: MiniCssExtractPlugin.loader,
+      loader: 'postcss-loader',
       options: {
-        hmr: process.env.NODE_ENV === 'development',
+        postcssOptions: {
+          plugins: [autoprefixer()],
+        },
       },
     },
-    'css-loader?sourceMap',
-    // postcss,
-    'sass-loader?sourceMap',
+    'sass-loader',
   ],
+};
+
+const fonts = {
+  test: /\.(woff|woff2|eot|ttf|otf)$/i,
+  type: 'asset/resource',
 };
 
 // put it all together
@@ -44,18 +48,21 @@ const config = {
   },
   devtool: 'source-map',
   // this replaces the uglify plugin
-  optimization: {
-    minimize: true,
-  },
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
     filename: '[name].bundle.js',
   },
+  target: 'web',
   module: {
-    rules: [javascript, styles],
+    rules: [javascript, styles, fonts],
   },
-  plugins: [new MiniCssExtractPlugin('style.css')],
-  mode: 'development',
+  mode: 'production',
+  optimization: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin()],
+  },
+  plugins: [new MiniCssExtractPlugin({filename: 'style.css'})],
+  stats: {errorDetails: true}
 };
 
 module.exports = config;
