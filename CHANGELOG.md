@@ -4,14 +4,9 @@ All the notable changes made to the [todohipo](https://todohipo.com) project.
 
 ## [Unreleased]
 
-### Added
+### Changed
 
-- Add an admin dashboard with all tips, their ratings, etc.
-- Add sentry error loging.
-
-### Fixed
-
-- Sitemap is back working again.
+- Updated dependencies.
 
 ## [1.1.0] - 2020-05-01
 
