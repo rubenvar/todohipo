@@ -5,7 +5,7 @@ function registerVote(e) {
   e.preventDefault();
   axios
     .post(this.action)
-    .then(resp => {
+    .then((resp) => {
       console.log(resp.data.votes);
       this.parentNode.innerHTML =
         '<p class="vota gracias">Muchas gracias por tu voto!</p>';

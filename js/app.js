@@ -6,7 +6,7 @@ import registerVote from './modules/vote';
 import showAllTips from './modules/show';
 
 // Shows tip & registers clicks to db when click on tip num, title, or votes
-$$('.tip .header').on('click', function(e) {
+$$('.tip .header').on('click', (e) => {
   e.preventDefault();
   this.parentNode.classList.toggle('show');
   if (this.parentNode.classList.contains('show')) {
@@ -15,14 +15,10 @@ $$('.tip .header').on('click', function(e) {
 });
 
 // Adds class "hovering" to tip when hovering
-$$('.tip').on('mouseover', function() {
-  this.classList.add('hovering');
-});
+$$('.tip').on('mouseover', () => this.classList.add('hovering'));
 
 // Removes class "hovering" from tip when stop hovering
-$$('.tip').on('mouseout', function() {
-  this.classList.remove('hovering');
-});
+$$('.tip').on('mouseout', () => this.classList.remove('hovering'));
 
 // Registers votes on tip vote form
 $$('.vote-forms .up').on('click', registerVote);
