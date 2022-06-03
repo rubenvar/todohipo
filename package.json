@@ -1,6 +1,6 @@
 {
   "name": "todohipo",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "build": "webpack --mode production --env production",
@@ -70,7 +70,7 @@
   "eslintConfig": {
     "extends": "wesbos",
     "ignorePatterns": [
-      "public/dist/*"
+      "public/*"
     ],
     "plugins": [
       "pug"

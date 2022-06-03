@@ -4,9 +4,18 @@ All the notable changes made to the [todohipo](https://todohipo.com) project.
 
 ## [Unreleased]
 
+## [1.2.0] - 2022-05-3
+
 ### Changed
 
+- Changed webpack scripts: now there are `dev` and `build` commands.
+- `eslint`ed everything.
 - Updated dependencies.
+- Added `wesbos` eslint config.
+
+### Fixed
+
+- Fixed logout after passport update.
 
 ## [1.1.0] - 2020-05-01
 
