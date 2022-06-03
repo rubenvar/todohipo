@@ -65,6 +65,6 @@ const config = {
   // stats: { errorDetails: true, children: false },
 };
 
-console.log('isDevMode?', isDevMode);
+console.log('🚀 isDevMode?', isDevMode);
 
 module.exports = config;
