@@ -10,7 +10,7 @@ mongoose.connect(process.env.DATABASE, {
   useCreateIndex: true,
 });
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
-mongoose.connection.on('error', err => {
+mongoose.connection.on('error', (err) => {
   console.error(`🙅 🚫 🙅 → ${err.message}`);
 });
 
