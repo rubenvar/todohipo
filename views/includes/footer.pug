@@ -32,7 +32,7 @@
       strong=user.role
       |.
     if user.role === 'ADMIN'
-      p
+      p.admin-links
         a(href="/update") Update a Tip
         |  - 
         a(href="/new") New Tip

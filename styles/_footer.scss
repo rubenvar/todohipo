@@ -1,7 +1,7 @@
 footer {
   text-align: center;
-  padding: 20px 0;
-  color: #ccc;
+  padding: 45px 0;
+  color: #aaa;
   font-size: 18px;
   background: #eee;
   margin-top: 90px;
@@ -14,14 +14,20 @@ footer {
     }
   }
   a {
-    color: #bbb;
+    color: #999;
     &:hover {
-      color: #ccc;
+      color: #aaa;
     }
   }
   hr {
     color: $grey;
     border: 1px solid $grey;
     width: 75%;
+    margin: 45px auto;
+  }
+  .admin-links {
+    a, input {
+      text-decoration: underline;
+    }
   }
 }
