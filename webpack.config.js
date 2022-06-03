@@ -3,6 +3,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const isDevMode = process.env.NODE_ENV === 'development';
 
@@ -20,8 +21,9 @@ const javascript = {
 
 // sass/css loader
 const styles = {
-  test: /\.(scss)$/,
+  test: /\.(sa|sc|c)ss$/,
   use: [
+    // https://webpack.js.org/plugins/mini-css-extract-plugin/#recommended
     isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
     'css-loader',
     {
@@ -43,26 +45,26 @@ const fonts = {
 
 // put it all together
 const config = {
-  entry: {
-    App: './public/javascripts/th-app.js',
-  },
+  entry: './js/app.js',
   devtool: 'source-map',
-  // this replaces the uglify plugin
   output: {
-    path: path.resolve(__dirname, 'public', 'dist'),
-    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'public'),
+    filename: 'app.bundle.js',
   },
   target: 'web',
   module: {
     rules: [javascript, styles, fonts],
   },
-  mode: 'production',
   optimization: {
     minimize: true,
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
   },
-  plugins: [new MiniCssExtractPlugin({ filename: 'style.css' })],
-  stats: { errorDetails: true },
+  plugins: [].concat(
+    isDevMode ? [] : [new MiniCssExtractPlugin({ filename: 'app.style.css' })]
+  ),
+  // stats: { errorDetails: true, children: false },
 };
+
+console.log('isDevMode?', isDevMode);
 
 module.exports = config;

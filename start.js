@@ -27,8 +27,6 @@ require('./models/User');
 // Start!
 const app = require('./app');
 
-console.log(process.env.NODE_ENV);
-
 app.set('port', process.env.PORT || 7777);
 const server = app.listen(app.get('port'), () => {
   console.log(
