@@ -26,7 +26,7 @@ html(lang="es-ES")
                   .flash(class=`flash-${category}`)
                     p.flash-text!= message
                     button.flash-remove(onClick="this.parentElement.remove()") &times;
-      
+
       //- .wrapper
       block content
 
@@ -34,4 +34,4 @@ html(lang="es-ES")
       include ./includes/footer
 
     block scripts
-      script(src="/dist/App.bundle.js")
+      script(src="/app.bundle.js")

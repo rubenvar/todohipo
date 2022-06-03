@@ -19,8 +19,9 @@ const app = express();
 app.set('views', path.join(__dirname, 'views')); // this is the folder for pug files
 app.set('view engine', 'pug'); // pug engine
 
-// serves up static files from the public folder
+// serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 // takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
@@ -54,7 +55,7 @@ app.use((req, res, next) => {
 });
 
 // add a robots.txt file
-app.use(robots(`${__dirname}/public/uploads/robots.txt`));
+app.use(robots(`${__dirname}/static/robots.txt`));
 
 // after allllll that above middleware, finally handle routes
 app.use('/', routes);
