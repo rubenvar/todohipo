@@ -5,3 +5,4 @@ node_modules/
 extra/
 .env
 .vscode/
+DOCS.md

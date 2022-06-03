@@ -1,3 +1,0 @@
-- Add an admin dashboard with all tips, their ratings, etc.
-- Add sentry error loging.
-- Sitemap is back working again.
