@@ -1,15 +1,21 @@
 // import environmental variables from our variables.env file
 require('dotenv').config();
 const mongoose = require('mongoose');
+const packageJson = require('./package.json');
 
 // Connect to our Database and handle any bad connections
-mongoose.connect(process.env.DATABASE, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
-});
-mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
+exports.clientP = mongoose
+  .connect(process.env.DATABASE, {
+    autoIndex: process.env.NODE_ENV === 'development',
+  })
+  .then((m) => {
+    console.log(`🚀 mongoose connected to db`);
+    return m.connection.getClient();
+  })
+  .catch((err) => {
+    console.error(`🙅 🚫 🙅 → ${err.message}`);
+  });
+
 mongoose.connection.on('error', (err) => {
   console.error(`🙅 🚫 🙅 → ${err.message}`);
 });
@@ -25,5 +31,9 @@ const app = require('./app');
 
 app.set('port', process.env.PORT || 7777);
 const server = app.listen(app.get('port'), () => {
-  console.log(`Express running → http://localhost:${server.address().port}`);
+  console.log(
+    `🚀 express running v${packageJson.version} → http://localhost:${
+      server.address().port
+    }`
+  );
 });

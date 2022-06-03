@@ -1,7 +1,4 @@
 const express = require('express');
-const session = require('express-session');
-const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -12,6 +9,7 @@ const robots = require('express-robots-txt');
 const routes = require('./routes');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
+const sessionHandler = require('./handlers/sessionHandler');
 require('./handlers/passport'); // specify the strategy for passport
 
 // create Express app
@@ -33,15 +31,7 @@ app.use(cookieParser());
 
 // sessions to store data on visitors from request to request:
 // keeps users logged in + allows to send flash messages
-app.use(
-  session({
-    secret: process.env.SECRET,
-    key: process.env.KEY,
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  })
-);
+app.use(sessionHandler);
 
 // passport JS to handle logins
 app.use(passport.initialize());
