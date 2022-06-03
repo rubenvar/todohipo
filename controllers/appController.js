@@ -38,7 +38,7 @@ exports.getBgPhotoData = (req, res, next) => {
   const clientId = process.env.UNSPLASH_ID;
   axios
     .get(uri, { headers: { Authorization: `Client-ID ${clientId}` } })
-    .then(resp => {
+    .then((resp) => {
       // Get the photo link and author
       res.locals.bgPhoto = resp.data.urls.regular;
       res.locals.pgPhotoAuthor = {
@@ -47,7 +47,7 @@ exports.getBgPhotoData = (req, res, next) => {
       };
       next();
     })
-    .catch(err => {
+    .catch((err) => {
       // If error, user fallback photo
       console.log(`Unsplash Error: ${err.code}`);
       res.locals.bgPhoto = '/images/cover/phone.jpg';
@@ -103,9 +103,7 @@ exports.updateTip = async (req, res) => {
 };
 
 exports.deleteTip = async (req, res) => {
-  const tip = await Tip.find({ _id: req.body.tip })
-    .remove()
-    .exec();
+  await Tip.find({ _id: req.body.tip }).remove().exec();
   req.flash('success', 'successfully deleted that tip');
   res.redirect('/');
 };
@@ -134,7 +132,7 @@ exports.bulkAddTips = async (req, res) => {
   const arr = text.split(/\n/);
   // for each tip, create a valid object for the db and store it
   await Promise.all(
-    arr.map(tip => {
+    arr.forEach((tip) => {
       const fullTip = tip.split(/\|/);
       fullTip.push(cat);
 
@@ -143,8 +141,9 @@ exports.bulkAddTips = async (req, res) => {
         desc: `<p>${fullTip[1]}</p>`,
         category: fullTip[2],
       };
+
       // send the obj to db
-      const dbTip = new Tip(tipObj).save();
+      new Tip(tipObj).save();
     })
   );
   req.flash('success', `Yay! ${arr.length} tips successfully added!`);
@@ -190,13 +189,13 @@ exports.countClick = async (req, res) => {
 };
 
 exports.resetClicks = async (req, res) => {
-  const tips = await Tip.updateMany({}, { clicks: 0 });
+  await Tip.updateMany({}, { clicks: 0 });
   req.flash('success', 'The click count in every tip was reseted');
   res.redirect('back');
 };
 
 exports.resetVotes = async (req, res) => {
-  const tips = await Tip.updateMany(
+  await Tip.updateMany(
     {},
     {
       $set: {
@@ -210,15 +209,13 @@ exports.resetVotes = async (req, res) => {
 };
 
 exports.resetIps = async (req, res) => {
-  const tips = await Tip.updateMany({}, { ips: '' });
+  await Tip.updateMany({}, { ips: '' });
   req.flash('success', 'All the ips were reseted');
   res.redirect('back');
 };
 
 exports.deleteTips = async (req, res) => {
-  const tips = await Tip.find()
-    .remove()
-    .exec();
+  await Tip.find().remove().exec();
   req.flash('success', 'All the tips were removed 🤷‍♂️');
   res.redirect('back');
 };
