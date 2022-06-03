@@ -61,8 +61,8 @@ const config = {
     minimize: true,
     minimizer: [new CssMinimizerPlugin()],
   },
-  plugins: [new MiniCssExtractPlugin({filename: 'style.css'})],
-  stats: {errorDetails: true}
+  plugins: [new MiniCssExtractPlugin({ filename: 'style.css' })],
+  stats: { errorDetails: true },
 };
 
 module.exports = config;

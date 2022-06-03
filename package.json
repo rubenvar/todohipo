@@ -66,6 +66,9 @@
   },
   "eslintConfig": {
     "extends": "wesbos",
+    "ignorePatterns": [
+      "public/dist/*"
+    ],
     "rules": {
       "no-console": "warn"
     },
