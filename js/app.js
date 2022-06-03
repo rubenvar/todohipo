@@ -1,4 +1,4 @@
-import '../sass/style.scss';
+import '../styles/style.scss';
 
 import { $, $$ } from './modules/bling';
 import registerClick from './modules/click';
