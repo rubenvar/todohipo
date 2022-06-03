@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
-mongoose.Promise = global.Promise;
-
 const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 const passportLocalMongoose = require('passport-local-mongoose');
+
+const { Schema } = mongoose;
 
 const userSchema = new Schema({
   email: {
@@ -23,6 +21,8 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
+    enum: ['USER', 'ADMIN'],
+    default: 'USER',
   },
 });
 
