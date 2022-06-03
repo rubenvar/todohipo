@@ -1,5 +1,5 @@
 // handy debugging function
-exports.dump = obj => JSON.stringify(obj, null, 2);
+exports.dump = (obj) => JSON.stringify(obj, null, 2);
 
 // categories for the tips
 exports.categories = [

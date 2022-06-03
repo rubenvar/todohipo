@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-// mongoose.Promise = global.Promise; // it's there to suppress the error even if it's added in start.js already
 
 const tipSchema = new Schema(
   {
@@ -54,7 +53,7 @@ const tipSchema = new Schema(
 );
 
 // Set a virtual field 'votes.avg' with the average
-tipSchema.virtual('votes.avg').get(function() {
+tipSchema.virtual('votes.avg').get(function () {
   let avg = Math.round((this.votes.total / this.votes.voteNum) * 10) / 10;
   if (!avg) {
     avg = 0;
