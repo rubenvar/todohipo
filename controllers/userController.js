@@ -31,9 +31,10 @@ exports.login = passport.authenticate('local', {
 });
 
 exports.logout = (req, res) => {
-  req.logout();
-  req.flash('success', 'You are now logged out! 👋');
-  res.redirect('/');
+  req.logout(() => {
+    req.flash('success', 'You are now logged out! 👋');
+    res.redirect('/');
+  });
 };
 
 exports.validations = [
@@ -64,7 +65,7 @@ exports.throwRegisterError = (req, res, next) => {
   if (!errors.isEmpty()) {
     req.flash(
       'error',
-      errors.array().map(err => err.msg)
+      errors.array().map((err) => err.msg)
     );
     res.render('register', {
       title: 'Register',
