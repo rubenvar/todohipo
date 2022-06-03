@@ -4,7 +4,18 @@ All the notable changes made to the [todohipo](https://todohipo.com) project.
 
 ## [Unreleased]
 
-## [1.2.0] - 2022-05-3
+## [1.2.1] - 2022-05-03
+
+### Changed
+
+- Tweaked footer admin styling.
+
+### Fixed
+
+- Added role in user model.
+- Added text in footer if user.
+
+## [1.2.0] - 2022-05-03
 
 ### Changed
 
