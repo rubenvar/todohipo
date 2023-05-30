@@ -4,6 +4,8 @@ All the notable changes made to the [todohipo](https://todohipo.com) project.
 
 ## [Unreleased]
 
+## [1.3.0] - 2023-05-31
+
 - Try to correctly get ip from express `req`.
 - Add `release-it`.
 - YOLO update all dependencies.
