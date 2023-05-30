@@ -178,7 +178,7 @@ exports.registerVote = async (req, res) => {
 };
 
 exports.countClick = async (req, res) => {
-  if (res.locals.user.role === 'ADMIN') return;
+  if (res.locals.user?.role === 'ADMIN') return;
   const { id } = req.body;
   const tip = await Tip.findOneAndUpdate(
     { _id: id },
