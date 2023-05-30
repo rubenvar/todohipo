@@ -19,6 +19,8 @@ const app = express();
 app.set('views', path.join(__dirname, 'views')); // this is the folder for pug files
 app.set('view engine', 'pug'); // pug engine
 
+app.set('trust proxy', true);
+
 // serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'static')));
@@ -46,9 +48,7 @@ app.use((req, res, next) => {
   res.locals.h = helpers; // some misc helper functions
   res.locals.flashes = req.flash(); // the flash messages
   res.locals.user = req.user || null; // the user data if they are authenticated
-  res.locals.ip = req.headers['x-forwarded-for']
-    ? req.headers['x-forwarded-for'].split(',')[0]
-    : req.connection.remoteAddress;
+  res.locals.ip = req.ip || req.connection.remoteAddress || req.headers['x-forwarded-for']?.split(',')[0];
   res.locals.currentPath = req.path; // the path
   res.locals.env = process.env.NODE_ENV; // pass only the environment, not the whole process.env object
   next();
