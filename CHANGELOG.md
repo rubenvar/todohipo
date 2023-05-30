@@ -4,6 +4,11 @@ All the notable changes made to the [todohipo](https://todohipo.com) project.
 
 ## [Unreleased]
 
+- Try to correctly get ip from express `req`.
+- Add `release-it`.
+- YOLO update all dependencies.
+- Fix null.
+
 ## [1.2.1] - 2022-05-03
 
 ### Changed
@@ -37,7 +42,7 @@ All the notable changes made to the [todohipo](https://todohipo.com) project.
 ### Changed
 
 - Check for 'ADMIN' user role to allow to see certain pages and areas instead of hardcoding my email.
-- Restrict access to the _new tip_, _tip update_, and _bulk-add_ pages. 🤦‍♂️
+- Restrict access to the *new tip*, *tip update*, and *bulk-add* pages. 🤦‍♂️
 - Pass environment to pug through res.locals.
 
 ### Fixed
